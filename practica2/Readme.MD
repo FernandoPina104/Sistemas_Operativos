@@ -18,17 +18,52 @@ Familiarizarse con la administración de archivos y directorios en la consola de
 - 📎 [Informe.pdf](Informe/Comandos%20Copiar%20y%20Borrar.pdf)
 
 ## 📸 Evidencias de la práctica
-<div align="center">
-  <img src="Evidencias/Comandos_mkdir.png" width="300">
-  <img src="Evidencias/mkdir_c2.png" width="300">
-  <img src="Evidencias/gedit.png" width="300">
-  <img src="Evidencias/gedit_c2.png" width="300">
-  <img src="Evidencias/Readme.png" width="300">
-  <img src="Evidencias/Readme_c2.png" width="300">
-  <img src="Evidencias/cp%20-r.png" width="300">
-  <img src="Evidencias/rm.png" width="300">
-  <img src="Evidencias/rm_c1.png" width="300">
-</div>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="Evidencias/Comandos_mkdir.png" width="280"><br>
+      <i>1. Creación de directorios (mkdir)</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/mkdir_c2.png" width="280"><br>
+      <i>2. Verificación de carpetas</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/gedit.png" width="280"><br>
+      <i>3. Abriendo editor (gedit)</i>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Evidencias/gedit_c2.png" width="280"><br>
+      <i>4. Edición de texto</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/Readme.png" width="280"><br>
+      <i>5. Archivo Readme creado</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/Readme_c2.png" width="280"><br>
+      <i>6. Contenido del Readme</i>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Evidencias/cp%20-r.png" width="280"><br>
+      <i>7. Copiado de carpetas (cp -r)</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/rm.png" width="280"><br>
+      <i>8. Borrado de archivos (rm)</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/rm_c1.png" width="280"><br>
+      <i>9. Verificación de borrado</i>
+    </td>
+  </tr>
+</table>
+
+---
 
 ## 📝 Comandos
 - ⌨️ [Comandos.txt](Comandos/comandos-basicos.txt)
