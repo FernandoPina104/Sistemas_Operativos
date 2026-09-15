@@ -10,7 +10,7 @@ Familiarizarse con la consola de Ubuntu mediante la práctica de comandos de lis
 ## Material utilizado
 - Laptop con el sistema operativo Ubuntu
 
-##Informe
+## Informe
 
 [Informe.pdf](Informe/Comandos_Basicos.pdf)
 
@@ -25,7 +25,7 @@ Familiarizarse con la consola de Ubuntu mediante la práctica de comandos de lis
 
 [Readme](Vídeo/readme.txt)
 
-[Ver video en YouTube]([https://youtu.be/eNkcOZwfGgY]
+[Ver video en YouTube] https://youtu.be/eNkcOZwfGgY
 
 ## Conclusiones
 La práctica permitió reforzar el uso de los comandos básicos de exploración y navegación en la terminal de Ubuntu (ls y cd), así como comprender la estructura jerárquica del sistema de archivos en Linux: la importancia de aplicar los parámetros correctos (como -la o -lh) para revelar información oculta, permisos de usuario y tamaños reales que normalmente una interfaz gráfica simplifica. La sensación de perderse entre rutas es común cuando se empieza a usar la línea de comandos, lo que resalta la importancia de dominar atajos como cd .. y cd ~ para saber siempre en qué directorio estamos posicionados y movernos con seguridad sin depender del ratón.
