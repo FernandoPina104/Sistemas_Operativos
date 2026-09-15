@@ -2,7 +2,7 @@
 Comandos Básicos en Ubuntu
 
 ## Descripción
-el objetivo de esta práctica es aprender los comandos básicos de Ubuntu. 
+El objetivo de esta práctica es aprender los comandos básicos de Ubuntu. 
 
 ## Objetivos de aprendizaje
 Familiarizarse con la consola de Ubuntu mediante la práctica de comandos de listado (ls) y navegación (cd), entendiendo cómo usar sus diferentes variaciones (banderas) para explorar y movernos entre los archivos del sistema de manera rápida y directa.
