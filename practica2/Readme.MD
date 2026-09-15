@@ -1,35 +1,38 @@
-# Nombre del proyecto
-Comandos Copiar y Borrar en Ubuntu
+# 📌 Nombre del proyecto
+**Comandos Copiar y Borrar en Ubuntu**
 
-## Descripción
-El objetivo de esta práctica es aprender los comandos básicos de Ubuntu. 
+---
 
-## Objetivos de aprendizaje
-Familiarizarse con la consola de Ubuntu mediante la práctica de comandos de listado (ls) y navegación (cd), entendiendo cómo usar sus diferentes variaciones (banderas) para explorar y movernos entre los archivos del sistema de manera rápida y directa.
+## 📖 Descripción
+El objetivo de esta práctica es dominar los comandos fundamentales para la creación, gestión, duplicación y eliminación de archivos y carpetas directamente desde la terminal de Ubuntu.
 
-## Material utilizado
-- Laptop con el sistema operativo Ubuntu
+## 🎯 Objetivos de aprendizaje
+Familiarizarse con la administración de archivos y directorios en la consola de Ubuntu mediante la ejecución de comandos para crear (`mkdir`), editar (`gedit`), copiar (`cp`) y eliminar (`rm`) elementos. Esto permite entender cómo usar sus diferentes variaciones y parámetros para operar el sistema de manera rápida y directa, teniendo un control total sin depender de la interfaz gráfica.
 
-## Informe
+## 💻 Material utilizado
+- 💻 Laptop con el sistema operativo **Ubuntu**
 
-[Informe.pdf](Informe/Comandos Copiar y Borrar.pdf)
+---
 
-## Evidencias de la práctica
+## 📄 Informe
+- 📎 [Informe.pdf](Informe/Comandos Copiar y Borrar.pdf)
 
-<img src="Evidencias/Comandos_Basicos.png" width="300">
+## 📸 Evidencias de la práctica
+<div align="center">
+  <img src="Evidencias/Comandos_Basicos.png" width="300" alt="Evidencia de la práctica">
+</div>
 
-## Comandos
-[Comandos.txt](Comandos/comandos-basicos.txt)
+## 📝 Comandos
+- ⌨️ [Comandos.txt](Comandos/comandos-basicos.txt)
 
-## Video del funcionamiento
+## 🎥 Video del funcionamiento
+- 📄 [Readme](Vídeo/readme.txt)
+- ▶️ [Ver video en YouTube](https://youtu.be/eNkcOZwfGgY)
 
-[Readme](Vídeo/readme.txt)
+---
 
-[Ver video en YouTube] https://youtu.be/eNkcOZwfGgY
+## 💡 Conclusiones
+La práctica permitió reforzar la administración directa del sistema de archivos en Ubuntu. Se comprendió la potencia y responsabilidad al usar comandos de manipulación como `cp` y `rm`, destacando la importancia de aplicar los parámetros correctos (como `-r` para procesar carpetas completas). El uso de la terminal nos enseña que las acciones son inmediatas y definitivas —especialmente al eliminar con `rm -r`, ya que no existe una papelera de reciclaje—, lo que exige mayor precaución al teclear, pero a cambio ofrece una velocidad y un nivel de control muy superior al uso tradicional del ratón.
 
-## Conclusiones
-La práctica permitió reforzar el uso de los comandos básicos de exploración y navegación en la terminal de Ubuntu (ls y cd), así como comprender la estructura jerárquica del sistema de archivos en Linux: la importancia de aplicar los parámetros correctos (como -la o -lh) para revelar información oculta, permisos de usuario y tamaños reales que normalmente una interfaz gráfica simplifica. La sensación de perderse entre rutas es común cuando se empieza a usar la línea de comandos, lo que resalta la importancia de dominar atajos como cd .. y cd ~ para saber siempre en qué directorio estamos posicionados y movernos con seguridad sin depender del ratón.
-
-## Resultados
-[Resultados.pdf](Resutados/Resultados_Comandos_Copiar_Borrar.pdf)
-
+## 📊 Resultados
+- 📈 [Resultados.pdf](Resutados/Resultados_Comandos_Copiar_Borrar.pdf)
