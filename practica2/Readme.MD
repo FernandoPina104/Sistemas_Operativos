@@ -19,7 +19,15 @@ Familiarizarse con la administración de archivos y directorios en la consola de
 
 ## 📸 Evidencias de la práctica
 <div align="center">
-  <img src="Evidencias/Comandos_Basicos.png" width="300" alt="Evidencia de la práctica">
+  <img src="Evidencias/Comandos_mkdir.png" width="300">
+  <img src="Evidencias/mkdir_c2.png" width="300">
+  <img src="Evidencias/gedit.png" width="300">
+  <img src="Evidencias/gedit_c2.png" width="300">
+  <img src="Evidencias/Readme.png" width="300">
+  <img src="Evidencias/Readme_c2.png" width="300">
+  <img src="Evidencias/cp%20-r.png" width="300">
+  <img src="Evidencias/rm.png" width="300">
+  <img src="Evidencias/rm_c1.png" width="300">
 </div>
 
 ## 📝 Comandos
