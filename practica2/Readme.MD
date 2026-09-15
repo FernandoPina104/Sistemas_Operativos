@@ -1,5 +1,5 @@
 # Nombre del proyecto
-Comandos Básicos en Ubuntu
+Comandos Copiar y Borrar en Ubuntu
 
 ## Descripción
 El objetivo de esta práctica es aprender los comandos básicos de Ubuntu. 
