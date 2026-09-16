@@ -66,7 +66,7 @@ Familiarizarse con la administración de archivos y directorios en la consola de
 ---
 
 ## 📝 Comandos
-- ⌨️ [Comandos.txt](Comandos/comandos-basicos.txt)
+- ⌨️ [Comandos.txt](Comandos/Comandos_Copiar_Borrar.txt)
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
