@@ -107,20 +107,6 @@ fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/pr
 
 --------------------------------------------------------------------------------
 # 7. ELIMINACIÓN DE ARCHIVOS Y CARPETAS (rm y rm -r)
-# Objetivo: Borrar el archivo Readme.txt y la carpeta 'info' en practica1.
---------------------------------------------------------------------------------
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ rm Readme.txt
-rm: ¿borrar el regular file 'Readme.txt' protegido contra escritura? (s/n) s
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ sudo ls
-info  vacia
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ rm -r info
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ sudo ls
-vacia
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ 
-
-
---------------------------------------------------------------------------------
-# 8. ELIMINACIÓN DE ARCHIVOS Y CARPETAS (rm y rm -r)
 # Objetivo: Borrar el archivo Readme.txt y la carpeta 'info' en practica2.
 --------------------------------------------------------------------------------
 fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica2$ rm Readme.txt
@@ -131,4 +117,18 @@ fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/pr
 rm: ¿borrar el regular file 'info/Readme.txt' protegido contra escritura? (s/n) s
 fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica2$ sudo ls
 vacia
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica2$
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica2$ 
+
+
+--------------------------------------------------------------------------------
+# 8. ELIMINACIÓN FINAL DE ARCHIVOS Y CARPETAS (rm y rm -r)
+# Objetivo: Borrar el archivo Readme.txt y la carpeta 'info' en practica1.
+--------------------------------------------------------------------------------
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ rm Readme.txt
+rm: ¿borrar el regular file 'Readme.txt' protegido contra escritura? (s/n) s
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ sudo ls
+info  vacia
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ rm -r info
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$ sudo ls
+vacia
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~/Documentos/practica1$
