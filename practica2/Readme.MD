@@ -70,7 +70,7 @@ Familiarizarse con la administración de archivos y directorios en la consola de
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
-- ▶️ [Ver video en YouTube](https://youtu.be/eNkcOZwfGgY)
+- ▶️ [Ver video en YouTube](https://youtu.be/6_UBo93rzWk)
 
 ---
 
