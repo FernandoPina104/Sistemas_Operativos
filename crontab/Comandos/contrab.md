@@ -1,20 +1,24 @@
+Markdown
+
 # 💻 Registro de Terminal: Monitoreo de Recursos en Segundo Plano
 
 A continuación se documenta el flujo exacto de los comandos ejecutados en la consola de Ubuntu durante la práctica.
 
+### 📝 1. Creación del script de monitoreo (`nano`)
+
+> **Objetivo:** Crear el archivo `monitoreo_salud.sh` dentro del directorio personal para registrar el estado de la RAM y el almacenamiento.
+
 ```bash
-### 📝 1. Creación del script de monitoreo (nano)
-
-Objetivo: Crear el archivo monitoreo_salud.sh dentro del directorio personal para registrar el estado de la RAM y el almacenamiento.
-
 fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ nano ~/monitoreo_salud.sh
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
 
+💻 2. Edición del script de monitoreo (Código Bash)
 
-### 💻 2. Edición del script de monitoreo (Código Bash)
+    Objetivo: Escribir las instrucciones necesarias para capturar y registrar el estado del sistema.
 
-Objetivo: Escribir las instrucciones necesarias para capturar y registrar el estado del sistema.  
-Nota: Este código se pega dentro del editor nano. Se guardan los cambios con Ctrl + O (seguido de Enter) y se cierra con Ctrl + X.
+    Nota: Este código se pega dentro del editor nano. Se guardan los cambios con Ctrl + O (seguido de Enter) y se cierra con Ctrl + X.
+
+Bash
 
 #!/bin/bash
 
@@ -23,7 +27,7 @@ ARCHIVO_LOG="$HOME/registro_salud.txt"
 
 # Imprimir una línea de separación y la fecha exacta
 echo "========================================" >> $ARCHIVO_LOG
-echo "🩺 Reporte de Salud: $(date '+\%Y-\%m-\%d \%H:\%M:\%S')" >> $ARCHIVO_LOG
+echo "🩺 Reporte de Salud: $(date '+%Y-%m-%d %H:%M:%S')" >> $ARCHIVO_LOG
 echo "========================================" >> $ARCHIVO_LOG
 
 # Registrar el uso de la memoria RAM (en Megabytes)
@@ -36,29 +40,34 @@ echo "💾 USO DE ALMACENAMIENTO:" >> $ARCHIVO_LOG
 df -h / >> $ARCHIVO_LOG
 echo -e "\n" >> $ARCHIVO_LOG
 
+🔑 3. Asignación de permisos de ejecución (chmod)
 
-### 🔑 3. Asignación de permisos de ejecución (chmod)
+    Objetivo: Otorgar permisos de ejecución al script para que el sistema operativo pueda lanzarlo sin restricciones.
 
-Objetivo: Otorgar permisos de ejecución al script para que el sistema operativo pueda lanzarlo sin restricciones.
+Bash
 
 fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ chmod +x ~/monitoreo_salud.sh
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
 
+⏱️ 4. Automatización en segundo plano (crontab)
 
-### ⏱️ 4. Automatización en segundo plano (crontab)
+    Objetivo: Abrir el editor de tareas programadas y configurar la ejecución automática del script cada 2 minutos.
 
-Objetivo: Abrir el editor de tareas programadas y configurar la ejecución automática del script cada 2 minutos.  
-Nota: Dentro del editor nano se agregó la línea */2 * * * * /home/fernando-pina/monitoreo_salud.sh.
+    Nota: Dentro del editor nano se agregó la línea */2 * * * * /home/fernando-pina/monitoreo_salud.sh.
+
+Bash
 
 fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ crontab -e
 crontab: installing new crontab
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
 
+📊 5. Revisión de la salud del sistema (cat y tail)
 
-### 📊 5. Revisión de la salud del sistema (cat y tail)
+    Objetivo: Leer el archivo de registro generado en segundo plano para verificar el consumo de los componentes del equipo.
 
-Objetivo: Leer el archivo de registro generado en segundo plano para verificar el consumo de los componentes del equipo.  
-Nota: Se usa cat para ver todo el historial y tail -f para ver la actualización en tiempo real.
+    Nota: Se usa cat para ver todo el historial y tail -f para ver la actualización en tiempo real.
+
+Bash
 
 fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ cat ~/registro_salud.txt
 ========================================
