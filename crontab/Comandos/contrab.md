@@ -1,1 +1,70 @@
+# 💻 Registro de Terminal: Monitoreo de Recursos en Segundo Plano
 
+A continuación se documenta el flujo exacto de los comandos ejecutados en la consola de Ubuntu durante la práctica.
+
+---
+
+### 📝 1. Creación del script de monitoreo (`nano`)
+
+> **Objetivo:** Crear el archivo `monitoreo_salud.sh` dentro del directorio personal para registrar el estado de la RAM y el almacenamiento.
+
+```bash
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ nano ~/monitoreo_salud.sh
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+
+🔑 2. Asignación de permisos de ejecución (chmod)
+
+    Objetivo: Otorgar permisos de ejecución al script para que el sistema operativo pueda lanzarlo sin restricciones.
+
+Bash
+
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ chmod +x ~/monitoreo_salud.sh
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+
+⏱️ 3. Automatización en segundo plano (crontab)
+
+    Objetivo: Abrir el editor de tareas programadas y configurar la ejecución automática del script cada 2 minutos.
+
+    Nota: Dentro del editor nano se agregó la línea */2 * * * * /home/fernando-pina/monitoreo_salud.sh
+
+Bash
+
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ crontab -e
+crontab: installing new crontab
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+
+📊 4. Revisión de la salud del sistema (cat y tail)
+
+    Objetivo: Leer el archivo de registro generado en segundo plano para verificar el consumo de los componentes del equipo.
+
+    Nota: Se usa cat para ver todo el historial y tail -f para ver la actualización en tiempo real.
+
+Bash
+
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ cat ~/registro_salud.txt
+========================================
+🩺 Reporte de Salud: 2026-09-29 13:28:01
+========================================
+🧠 USO DE MEMORIA RAM:
+               total        used        free      shared  buff/cache   available
+Mem:           15935        9250        2130         550        4555        6100
+Swap:           2048           0        2048
+
+💾 USO DE ALMACENAMIENTO:
+S.ficheros     Tamaño Usados  Disp Uso% Montado en
+/dev/nvme0n1p2   250G   185G   53G  78% /
+
+
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ tail -f ~/registro_salud.txt
+========================================
+🩺 Reporte de Salud: 2026-09-29 13:30:01
+========================================
+🧠 USO DE MEMORIA RAM:
+               total        used        free      shared  buff/cache   available
+Mem:           15935        9270        2100         550        4565        6080
+Swap:           2048           0        2048
+
+💾 USO DE ALMACENAMIENTO:
+S.ficheros     Tamaño Usados  Disp Uso% Montado en
+/dev/nvme0n1p2   250G   185G   53G  78% /
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
