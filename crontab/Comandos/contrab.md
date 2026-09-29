@@ -10,15 +10,17 @@ A continuación se documenta el flujo exacto de los comandos ejecutados en la co
 
 ```bash
 fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ nano ~/monitoreo_salud.sh
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+```
 
-💻 2. Edición del script de monitoreo (Código Bash)
 
-    Objetivo: Escribir las instrucciones necesarias para capturar y registrar el estado del sistema.
+### 💻 2. Edición del script de monitoreo (Código Bash)
 
-    Nota: Este código se pega dentro del editor nano. Se guardan los cambios con Ctrl + O (seguido de Enter) y se cierra con Ctrl + X.
+> **Objetivo:** Escribir las instrucciones necesarias para capturar y registrar el estado del sistema.  
+> *Nota: Este código se pega dentro del editor nano. Se guardan los cambios con Ctrl + O (seguido de Enter) y se cierra con Ctrl + X.*
 
-    #!/bin/bash
+```bash
+#!/bin/bash
 
 # Archivo donde se guardará el registro
 ARCHIVO_LOG="$HOME/registro_salud.txt"
@@ -37,31 +39,38 @@ echo "" >> $ARCHIVO_LOG
 echo "💾 USO DE ALMACENAMIENTO:" >> $ARCHIVO_LOG
 df -h / >> $ARCHIVO_LOG
 echo -e "\n" >> $ARCHIVO_LOG
+```
 
-🔑 3. Asignación de permisos de ejecución (chmod)
 
-    Objetivo: Otorgar permisos de ejecución al script para que el sistema operativo pueda lanzarlo sin restricciones.
+### 🔑 3. Asignación de permisos de ejecución (`chmod`)
 
-    fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ chmod +x ~/monitoreo_salud.sh
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
+> **Objetivo:** Otorgar permisos de ejecución al script para que el sistema operativo pueda lanzarlo sin restricciones.
 
-⏱️ 4. Automatización en segundo plano (crontab)
+```bash
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ chmod +x ~/monitoreo_salud.sh
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+```
 
-    Objetivo: Abrir el editor de tareas programadas y configurar la ejecución automática del script cada 2 minutos.
 
-    Nota: Dentro del editor nano se agregó la línea */2 * * * * /home/fernando-pina/monitoreo_salud.sh.
+### ⏱️ 4. Automatización en segundo plano (`crontab`)
 
-    fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ crontab -e
+> **Objetivo:** Abrir el editor de tareas programadas y configurar la ejecución automática del script cada 2 minutos.  
+> *Nota: Dentro del editor nano se agregó la línea `*/2 * * * * /home/fernando-pina/monitoreo_salud.sh`.*
+
+```bash
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ crontab -e
 crontab: installing new crontab
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+```
 
-📊 5. Revisión de la salud del sistema (cat y tail)
 
-    Objetivo: Leer el archivo de registro generado en segundo plano para verificar el consumo de los componentes del equipo.
+### 📊 5. Revisión de la salud del sistema (`cat` y `tail`)
 
-    Nota: Se usa cat para ver todo el historial y tail -f para ver la actualización en tiempo real.
+> **Objetivo:** Leer el archivo de registro generado en segundo plano para verificar el consumo de los componentes del equipo.  
+> *Nota: Se usa `cat` para ver todo el historial y `tail -f` para ver la actualización en tiempo real.*
 
-    fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ cat ~/registro_salud.txt
+```bash
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ cat ~/registro_salud.txt
 ========================================
 🩺 Reporte de Salud: 2026-09-29 13:28:01
 ========================================
@@ -87,4 +96,5 @@ Swap:           2048           0        2048
 💾 USO DE ALMACENAMIENTO:
 S.ficheros     Tamaño Usados  Disp Uso% Montado en
 /dev/nvme0n1p2   250G   185G   53G  78% /
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+```
