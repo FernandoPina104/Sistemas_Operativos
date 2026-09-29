@@ -48,15 +48,6 @@ Familiarizarse con la automatización de tareas en Linux mediante el demonio `cr
     </td>
   </tr>
   <tr>
-    <td align="center">
-      <img src="Evidencias/monitoreo_salud.png" width="280"><br>
-      <i>7. Monitoreo en ejecución</i>
-    </td>
-    <td align="center">
-    </td>
-    <td align="center">
-    </td>
-  </tr>
 </table>
 
 ---
