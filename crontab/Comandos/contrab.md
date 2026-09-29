@@ -2,8 +2,6 @@
 
 A continuación se documenta el flujo exacto de los comandos ejecutados en la consola de Ubuntu durante la práctica.
 
-
-
 ### 📝 1. Creación del script de monitoreo (nano)
 
 > **Objetivo:** Crear el archivo `monitoreo_salud.sh` dentro del directorio personal para registrar el estado de la RAM y el almacenamiento.
