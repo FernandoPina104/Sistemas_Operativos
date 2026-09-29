@@ -18,7 +18,7 @@ fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
 
     Nota: Este código se pega dentro del editor nano. Se guardan los cambios con Ctrl + O (seguido de Enter) y se cierra con Ctrl + X.
 
-Bash
+´´bash
 
 #!/bin/bash
 
