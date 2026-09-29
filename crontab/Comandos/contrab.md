@@ -1,8 +1,8 @@
-Markdown
-
 # 💻 Registro de Terminal: Monitoreo de Recursos en Segundo Plano
 
 A continuación se documenta el flujo exacto de los comandos ejecutados en la consola de Ubuntu durante la práctica.
+
+---
 
 ### 📝 1. Creación del script de monitoreo (`nano`)
 
@@ -10,7 +10,7 @@ A continuación se documenta el flujo exacto de los comandos ejecutados en la co
 
 ```bash
 fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ nano ~/monitoreo_salud.sh
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
 
 💻 2. Edición del script de monitoreo (Código Bash)
 
@@ -18,9 +18,7 @@ fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
 
     Nota: Este código se pega dentro del editor nano. Se guardan los cambios con Ctrl + O (seguido de Enter) y se cierra con Ctrl + X.
 
-´´bash
-
-#!/bin/bash
+    #!/bin/bash
 
 # Archivo donde se guardará el registro
 ARCHIVO_LOG="$HOME/registro_salud.txt"
@@ -44,10 +42,8 @@ echo -e "\n" >> $ARCHIVO_LOG
 
     Objetivo: Otorgar permisos de ejecución al script para que el sistema operativo pueda lanzarlo sin restricciones.
 
-Bash
-
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ chmod +x ~/monitoreo_salud.sh
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+    fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ chmod +x ~/monitoreo_salud.sh
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
 
 ⏱️ 4. Automatización en segundo plano (crontab)
 
@@ -55,11 +51,9 @@ fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
 
     Nota: Dentro del editor nano se agregó la línea */2 * * * * /home/fernando-pina/monitoreo_salud.sh.
 
-Bash
-
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ crontab -e
+    fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ crontab -e
 crontab: installing new crontab
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ 
+fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
 
 📊 5. Revisión de la salud del sistema (cat y tail)
 
@@ -67,9 +61,7 @@ fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$
 
     Nota: Se usa cat para ver todo el historial y tail -f para ver la actualización en tiempo real.
 
-Bash
-
-fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ cat ~/registro_salud.txt
+    fernando-pina@fernando-pina-Victus-by-HP-Gaming-Laptop-15-fa1xxx:~$ cat ~/registro_salud.txt
 ========================================
 🩺 Reporte de Salud: 2026-09-29 13:28:01
 ========================================
