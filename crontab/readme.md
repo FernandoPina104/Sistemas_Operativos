@@ -53,7 +53,7 @@ Familiarizarse con la automatización de tareas en Linux mediante el demonio `cr
 ---
 
 ## 📝 Comandos
-- ⌨️ [Comandos.txt](Comandos/crontrab.md)
+- ⌨️ [Comandos.txt](Comandos/crontab.md)
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
