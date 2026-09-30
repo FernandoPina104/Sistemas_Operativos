@@ -1,71 +1,78 @@
-# 📌 Nombre del proyecto
-**Demonio en Ubuntu**
+# 📌 Demonio de Monitoreo Persistente con Systemd
 
 ---
 
 ## 📖 Descripción
-El objetivo de esta práctica es diseñar e implementar un sistema de monitoreo desatendido en segundo plano que registre periódicamente la "salud" del equipo (consumo de Memoria RAM y almacenamiento del disco), guardando los historiales automáticamente en la carpeta personal.
+El objetivo de esta práctica es diseñar e implementar un servicio/demonio persistente en segundo plano administrado por **systemd**. El demonio se ejecuta continuamente en un ciclo de 5 segundos registrando en una bitácora la fecha/hora exacta con segundos, el número total de procesos activos y la memoria RAM disponible. El sistema cuenta con tolerancia a fallos, garantizando que ante un cierre forzado mediante el comando `kill -9`, el sistema operativo (`systemd`) lo reinicie automáticamente en menos de 5 segundos con un nuevo PID.
 
 ## 🎯 Objetivos de aprendizaje
-Familiarizarse con la automatización de tareas en Linux mediante el demonio `cron`. Aprender a estructurar scripts independientes en Bash, redireccionar flujos de salida de comandos como `free` y `df` hacia archivos de texto (`.log`), y aplicar los permisos de ejecución correctos (`chmod +x`). Esto permite entender cómo el sistema puede auditarse a sí mismo de manera programada sin necesidad de intervención manual o interfaz gráfica.
+Familiarizarse con la creación y administración de servicios del sistema en Linux mediante **systemd**. Aprender a estructurar scripts continuos en Bash con ciclos infinitos, escribir archivos de unidad `.service`, configurar directivas de reanimación automática (`Restart=always` y `RestartSec=3`), direccionar flujos de datos hacia archivos de log (`/var/log/monitordemonio.log`) y aplicar pruebas de resiliencia mediante la interrupción abrupta de procesos con señales del kernel.
 
 ## 💻 Material utilizado
-- 💻 Laptop con el sistema operativo **Ubuntu Desktop**
+- 💻 Laptop con el sistema operativo **Ubuntu Desktop** (Linux)
+- ⚙️ Administrador de sistemas y servicios **systemd**
 
 ---
 
 ## 📄 Informe
-- 📎 [Informe.pdf](Informe/Informe_demonio.pdf)
+- 📎 [informe-demonio.pdf](informe-demonio.pdf)
 
 ## 📸 Evidencias de la práctica
 <table align="center">
   <tr>
     <td align="center">
-      <img src="Evidencias/d01.png" width="280"><br>
-      <i>1. Abriendo el editor</i>
+      <img src="d01.png" width="280"><br>
+      <i>1. Creación del script en Bash</i>
     </td>
     <td align="center">
-      <img src="Evidencias/d02.png" width="280"><br>
-      <i>2. Escribiendo el script</i>
+      <img src="d02.png" width="280"><br>
+      <i>2. Otorgando permisos de ejecución (chmod +x)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/d03.png" width="280"><br>
-      <i>3. Archivo del script creado</i>
+      <img src="d03.png" width="280"><br>
+      <i>3. Archivo de unidad monitordemonio.service</i>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="Evidencias/d04.png" width="280"><br>
-      <i>4. Otorgando permisos (chmod)</i>
+      <img src="d04.png" width="280"><br>
+      <i>4. Recarga de configuración (daemon-reload)</i>
     </td>
     <td align="center">
       <img src="d05.png" width="280"><br>
-      <i>5. Configurando intervalo (cron)</i>
+      <i>5. Habilitación e inicio del servicio</i>
     </td>
     <td align="center">
-      <img src="Evidencias/d06.png" width="280"><br>
-      <i>6. Salida de los logs</i>
-      <td align="center">
-      <img src="Evidencias/d07.png" width="280"><br>
-      <i>7. Salida de los logs</i>
-        <td align="center">
-      <img src="Evidencias/d08.png" width="280"><br>
-      <i>8. Salida de los logs</i>
-          <td align="center">
-      <img src="Evidencias/d09.png" width="280"><br>
-      <i>9. Salida de los logs</i>
-            <td align="center">
-      <img src="Evidencias/d10.png" width="280"><br>
-      <i>10. Salida de los logs</i>
+      <img src="d06.png" width="280"><br>
+      <i>6. Estado activo del servicio (active running)</i>
     </td>
   </tr>
   <tr>
+    <td align="center">
+      <img src="d07.png" width="280"><br>
+      <i>7. Salida de los logs en tiempo real (tail -f)</i>
+    </td>
+    <td align="center">
+      <img src="d08.png" width="280"><br>
+      <i>8. Consulta del PID inicial</i>
+    </td>
+    <td align="center">
+      <img src="d09.png" width="280"><br>
+      <i>9. Interrupción forzada con kill -9</i>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="3">
+      <img src="d10.png" width="280"><br>
+      <i>10. Reanimación automática por systemd y asignación de nuevo PID</i>
+    </td>
+  </tr>
 </table>
 
 ---
 
 ## 📝 Comandos
-- ⌨️ [Comandos.txt](Comandos/demonio_centinela.md)
+- ⌨️ [Comandos_demonio.md](Comandos/Comandos_demonio.md)
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
@@ -74,7 +81,7 @@ Familiarizarse con la automatización de tareas en Linux mediante el demonio `cr
 ---
 
 ## 💡 Conclusiones
-La práctica permitió comprender el enorme potencial de la automatización en entornos Linux. Se comprobó que, al crear scripts modulares en Bash y combinarlos con el planificador de tareas `crontab`, es posible delegar tareas repetitivas (como el monitoreo de recursos) directamente al sistema operativo para que las ejecute en segundo plano de forma invisible y eficiente. Además, se reforzó la importancia de la gestión de permisos en Linux, ya que sin aplicar `chmod +x`, el sistema por motivos de seguridad impide la ejecución autónoma de cualquier script.
+La práctica permitió comprender el funcionamiento y la arquitectura de los demonios en entornos Linux modernos utilizando `systemd`. A diferencia de los programas ejecutados en terminales interactivas o mediante tareas programadas como `cron`, un servicio administrado por `systemd` garantiza supervisión continua en segundo plano. Se comprobó experimentalmente la condición de aprobación: al aplicar la directiva `Restart=always` con un temporizador `RestartSec=3`, el sistema operativo detecta la terminación abrupta del proceso provocada por `kill -9` y levanta automáticamente el demonio en menos de 5 segundos asignándole un nuevo PID, garantizando la alta disponibilidad del monitoreo.
 
 ## 📊 Resultados
-- 📈 [Resultados.pdf](Resultados/Resultados-demonio.pdf)
+- 📈 [resultados-demonio.pdf](resultados-demonio.pdf)
