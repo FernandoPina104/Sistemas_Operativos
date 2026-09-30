@@ -57,7 +57,7 @@ Familiarizarse con la automatización de tareas en Linux mediante el demonio `cr
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
-- ▶️ [Ver video en YouTube](https://youtu.be/TU_ENLACE_AQUI)
+- ▶️ [Ver video en YouTube](https://youtu.be/FUe6T0LAR5Y)
 
 ---
 
