@@ -21,49 +21,49 @@ Familiarizarse con la creación y administración de servicios del sistema en Li
 <table align="center">
   <tr>
     <td align="center">
-      <img src="d01.png" width="280"><br>
+      <img src="Evidencias/d01.png" width="280"><br>
       <i>1. Creación del script en Bash</i>
     </td>
     <td align="center">
-      <img src="d02.png" width="280"><br>
+      <img src="Evidencias/d02.png" width="280"><br>
       <i>2. Otorgando permisos de ejecución (chmod +x)</i>
     </td>
     <td align="center">
-      <img src="d03.png" width="280"><br>
+      <img src="Evidencias/d03.png" width="280"><br>
       <i>3. Archivo de unidad monitordemonio.service</i>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="d04.png" width="280"><br>
+      <img src="Evidencias/d04.png" width="280"><br>
       <i>4. Recarga de configuración (daemon-reload)</i>
     </td>
     <td align="center">
-      <img src="d05.png" width="280"><br>
+      <img src="Evidencias/d05.png" width="280"><br>
       <i>5. Habilitación e inicio del servicio</i>
     </td>
     <td align="center">
-      <img src="d06.png" width="280"><br>
+      <img src="Evidencias/d06.png" width="280"><br>
       <i>6. Estado activo del servicio (active running)</i>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="d07.png" width="280"><br>
+      <img src="Evidencias/d07.png" width="280"><br>
       <i>7. Salida de los logs en tiempo real (tail -f)</i>
     </td>
     <td align="center">
-      <img src="d08.png" width="280"><br>
+      <img src="Evidencias/d08.png" width="280"><br>
       <i>8. Consulta del PID inicial</i>
     </td>
     <td align="center">
-      <img src="d09.png" width="280"><br>
+      <img src="Evidencias/d09.png" width="280"><br>
       <i>9. Interrupción forzada con kill -9</i>
     </td>
   </tr>
   <tr>
     <td align="center" colspan="3">
-      <img src="d10.png" width="280"><br>
+      <img src="Evidencias/d10.png" width="280"><br>
       <i>10. Reanimación automática por systemd y asignación de nuevo PID</i>
     </td>
   </tr>
