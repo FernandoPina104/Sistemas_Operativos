@@ -15,7 +15,7 @@ Familiarizarse con la creación y administración de servicios del sistema en Li
 ---
 
 ## 📄 Informe
-- 📎 [informe-demonio.pdf](informe-demonio.pdf)
+- 📎 [Informe](informe-demonio.pdf)
 
 ## 📸 Evidencias de la práctica
 <table align="center">
@@ -84,4 +84,4 @@ Familiarizarse con la creación y administración de servicios del sistema en Li
 La práctica permitió comprender el funcionamiento y la arquitectura de los demonios en entornos Linux modernos utilizando `systemd`. A diferencia de los programas ejecutados en terminales interactivas o mediante tareas programadas como `cron`, un servicio administrado por `systemd` garantiza supervisión continua en segundo plano. Se comprobó experimentalmente la condición de aprobación: al aplicar la directiva `Restart=always` con un temporizador `RestartSec=3`, el sistema operativo detecta la terminación abrupta del proceso provocada por `kill -9` y levanta automáticamente el demonio en menos de 5 segundos asignándole un nuevo PID, garantizando la alta disponibilidad del monitoreo.
 
 ## 📊 Resultados
-- 📈 [resultados-demonio.pdf](resultados-demonio.pdf)
+- 📈 [Resultados](resultados-demonio.pdf)
