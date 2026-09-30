@@ -72,7 +72,7 @@ Familiarizarse con la creación y administración de servicios del sistema en Li
 ---
 
 ## 📝 Comandos
-- ⌨️ [Comandos_demonio.md](Comandos/Comandos_demonio.md)
+- ⌨️ [Comandos](Comandos/Comandos_demonio.md)
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
