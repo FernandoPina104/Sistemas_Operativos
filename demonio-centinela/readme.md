@@ -21,30 +21,42 @@ Familiarizarse con la automatización de tareas en Linux mediante el demonio `cr
 <table align="center">
   <tr>
     <td align="center">
-      <img src="Evidencias/gedit.png" width="280"><br>
+      <img src="Evidencias/d01.png" width="280"><br>
       <i>1. Abriendo el editor</i>
     </td>
     <td align="center">
-      <img src="Evidencias/editor.png" width="280"><br>
+      <img src="Evidencias/d02.png" width="280"><br>
       <i>2. Escribiendo el script</i>
     </td>
     <td align="center">
-      <img src="Evidencias/salud_sh.png" width="280"><br>
+      <img src="Evidencias/d03.png" width="280"><br>
       <i>3. Archivo del script creado</i>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="Evidencias/permiso.png" width="280"><br>
+      <img src="Evidencias/d04.png" width="280"><br>
       <i>4. Otorgando permisos (chmod)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/tiempo.png" width="280"><br>
+      <img src="d05.png" width="280"><br>
       <i>5. Configurando intervalo (cron)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/registro.png" width="280"><br>
+      <img src="Evidencias/d06.png" width="280"><br>
       <i>6. Salida de los logs</i>
+      <td align="center">
+      <img src="Evidencias/d07.png" width="280"><br>
+      <i>7. Salida de los logs</i>
+        <td align="center">
+      <img src="Evidencias/d08.png" width="280"><br>
+      <i>8. Salida de los logs</i>
+          <td align="center">
+      <img src="Evidencias/d09.png" width="280"><br>
+      <i>9. Salida de los logs</i>
+            <td align="center">
+      <img src="Evidencias/d10.png" width="280"><br>
+      <i>10. Salida de los logs</i>
     </td>
   </tr>
   <tr>
