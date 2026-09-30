@@ -76,7 +76,7 @@ Familiarizarse con la creación y administración de servicios del sistema en Li
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
-- ▶️ [Ver video en YouTube](https://youtu.be/TU_ENLACE_AQUI)
+- ▶️ [Ver video en YouTube](https://youtu.be/Upp0sWO5Haw)
 
 ---
 
