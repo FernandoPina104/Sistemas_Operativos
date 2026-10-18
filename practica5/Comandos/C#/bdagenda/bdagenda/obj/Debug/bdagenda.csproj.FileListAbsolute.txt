@@ -1,0 +1,11 @@
+C:\Users\Ferna\OneDrive\Documentos\SharpDevelop Projects\bdagenda\bdagenda\obj\Debug\bdagenda.csprojResolveAssemblyReference.cache
+C:\Users\Ferna\OneDrive\Documentos\SharpDevelop Projects\bdagenda\bdagenda\bin\Debug\bdagenda.exe
+C:\Users\Ferna\OneDrive\Documentos\SharpDevelop Projects\bdagenda\bdagenda\bin\Debug\bdagenda.pdb
+C:\Users\Ferna\OneDrive\Documentos\SharpDevelop Projects\bdagenda\bdagenda\obj\Debug\bdagenda.exe
+C:\Users\Ferna\OneDrive\Documentos\SharpDevelop Projects\bdagenda\bdagenda\obj\Debug\bdagenda.pdb
+C:\Users\Daniel A. Piña Ríos\Downloads\bdagenda\bdagenda\obj\Debug\bdagenda.csprojResolveAssemblyReference.cache
+C:\Users\Daniel A. Piña Ríos\Downloads\bdagenda\bdagenda\obj\Debug\bdagenda.exe
+C:\Users\Daniel A. Piña Ríos\Downloads\bdagenda\bdagenda\obj\Debug\bdagenda.pdb
+C:\Users\Daniel A. Piña Ríos\Downloads\bdagenda\bdagenda\bin\Debug\bdagenda.exe.config
+C:\Users\Daniel A. Piña Ríos\Downloads\bdagenda\bdagenda\bin\Debug\bdagenda.exe
+C:\Users\Daniel A. Piña Ríos\Downloads\bdagenda\bdagenda\bin\Debug\bdagenda.pdb
