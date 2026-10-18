@@ -1,6 +1,6 @@
-# ==========================================================================================
-# 🌐 UBUNTU (Servidor Apache)
-# ==========================================================================================
+# ============================
+# 🐧 UBUNTU (Servidor Apache)
+# ============================
 
 # 📦 1. Instalar Apache (apt)
 > ** 📌 Objetivo: Actualizar la lista de paquetes disponibles en los repositorios de Ubuntu y luego descargar e instalar el servidor web Apache2.
