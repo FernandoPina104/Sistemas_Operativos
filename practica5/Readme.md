@@ -1,82 +1,85 @@
 # 📌 Nombre del proyecto
-**Comandos Copiar y Borrar en Ubuntu**
+**Agenda Estudiantil: Arquitectura Cliente-Servidor (C# Windows - MySQL Ubuntu)**
 
 ---
 
 ## 📖 Descripción
-El objetivo de esta práctica es dominar los comandos fundamentales para la creación, gestión, duplicación y eliminación de archivos y carpetas directamente desde la terminal de Ubuntu.
+El objetivo de esta práctica es diseñar e implementar un sistema distribuido bajo la arquitectura cliente-servidor. Se configuró un servidor de base de datos MySQL alojado en Ubuntu Linux para aceptar conexiones externas, mientras que del lado del cliente, se desarrolló una aplicación de escritorio (Agenda Estudiantil) en Windows utilizando C# para gestionar, consultar y modificar los registros a través de la red local.
 
 ## 🎯 Objetivos de aprendizaje
-Familiarizarse con la administración de archivos y directorios en la consola de Ubuntu mediante la ejecución de comandos para crear (`mkdir`), editar (`gedit`), copiar (`cp`) y eliminar (`rm`) elementos. Esto permite entender cómo usar sus diferentes variaciones y parámetros para operar el sistema de manera rápida y directa, teniendo un control total sin depender de la interfaz gráfica.
+Familiarizarse con la configuración de servicios de red en Linux y la conectividad a bases de datos remotas. Aprender a modificar los archivos de configuración de MySQL (`mysqld.cnf`) para escuchar en la IP `0.0.0.0`, administrar el cortafuegos (`ufw`) abriendo el puerto 3306, y gestionar privilegios de usuarios remotos con autenticación heredada (`mysql_native_password`). Del lado del cliente, comprender cómo establecer cadenas de conexión remotas y ejecutar sentencias SQL desde una interfaz gráfica interactiva en Windows (Windows Forms).
 
 ## 💻 Material utilizado
-- 💻 Laptop con el sistema operativo **Ubuntu**
+- 💻 Laptop/Partición con el sistema operativo **Ubuntu Linux** (Servidor MySQL)
+- 💻 Laptop/Partición con el sistema operativo **Windows 10/11** (Cliente C#)
+- ⚙️ Gestor de paquetes y terminal de Ubuntu (UFW, systemctl, nano)
+- 🖥️ IDE para C# (Visual Studio / SharpDevelop)
 
 ---
 
 ## 📄 Informe
-- 📎 [Informe.pdf](Informe/Comandos%20Copiar%20y%20Borrar.pdf)
+- 📎 [Informe.pdf](Informe/Informe_Conexion_Remota_BD.pdf)
 
 ## 📸 Evidencias de la práctica
 <table align="center">
   <tr>
     <td align="center">
-      <img src="Evidencias/Comandos_mkdir.png" width="280"><br>
-      <i>1. Creación de directorios (mkdir)</i>
+      <img src="Evidencias/c01_ip_ubuntu.jpg" width="280"><br>
+      <i>1. Consulta de IP del servidor (hostname -I)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/mkdir_c2.png" width="280"><br>
-      <i>2. Verificación de carpetas</i>
+      <img src="Evidencias/c02_mysqld_cnf.jpg" width="280"><br>
+      <i>2. Configuración de bind-address (0.0.0.0)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/gedit.png" width="280"><br>
-      <i>3. Abriendo editor (gedit)</i>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="Evidencias/gedit_c2.png" width="280"><br>
-      <i>4. Edición de texto</i>
-    </td>
-    <td align="center">
-      <img src="Evidencias/Readme.png" width="280"><br>
-      <i>5. Archivo Readme creado</i>
-    </td>
-    <td align="center">
-      <img src="Evidencias/Readme_c2.png" width="280"><br>
-      <i>6. Contenido del Readme</i>
+      <img src="Evidencias/c03_ufw_3306.jpg" width="280"><br>
+      <i>3. Apertura del puerto 3306 en el Firewall (UFW)</i>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="Evidencias/cp%20-r.png" width="280"><br>
-      <i>7. Copiado de carpetas (cp -r)</i>
+      <img src="Evidencias/c04_mysql_privilegios.jpg" width="280"><br>
+      <i>4. Asignación de permisos remotos en MySQL (%)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/rm.png" width="280"><br>
-      <i>8. Borrado de archivos (rm)</i>
+      <img src="Evidencias/c05_test_windows.jpg" width="280"><br>
+      <i>5. Prueba de conexión exitosa desde Windows (PowerShell)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/rm_c1.png" width="280"><br>
-      <i>9. Verificación de borrado</i>
+      <img src="Evidencias/c06_csharp_codigo.jpg" width="280"><br>
+      <i>6. Configuración de la cadena de conexión en C#</i>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Evidencias/c07_interfaz_agenda.jpg" width="280"><br>
+      <i>7. Ejecución de la aplicación en Windows</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/c08_insertar_dato.jpg" width="280"><br>
+      <i>8. Inserción de un nuevo alumno desde la interfaz</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/c09_verificacion_ubuntu.jpg" width="280"><br>
+      <i>9. Verificación de los datos reflejados en el servidor Ubuntu</i>
     </td>
   </tr>
 </table>
 
 ---
 
-## 📝 Comandos
-- ⌨️ [Comandos.txt](Comandos/Comandos_Copiar_Borrar.md)
+## 📝 Comandos y Código
+- ⌨️ [Comandos de Servidor y BD](Comandos/Comandos_Ubuntu_MySQL.md)
+- 💻 [Código Fuente C#](Comandos/C%23/Codigo_AgendaApp.md)
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
-- ▶️ [Ver video en YouTube](https://youtu.be/6_UBo93rzWk)
+- ▶️ [Ver video en YouTube](https://youtu.be/TU_ENLACE_AQUI)
 
 ---
 
 ## 💡 Conclusiones
-La práctica permitió reforzar la administración directa del sistema de archivos en Ubuntu. Se comprendió la potencia y responsabilidad al usar comandos de manipulación como `cp` y `rm`, destacando la importancia de aplicar los parámetros correctos (como `-r` para procesar carpetas completas). El uso de la terminal nos enseña que las acciones son inmediatas y definitivas —especialmente al eliminar con `rm -r`, ya que no existe una papelera de reciclaje—, lo que exige mayor precaución al teclear, pero a cambio ofrece una velocidad y un nivel de control muy superior al uso tradicional del ratón.
+La práctica demostró exitosamente la viabilidad y el proceso técnico para separar la lógica de presentación (Windows) del almacenamiento de datos (Ubuntu). Se comprobó que por defecto los motores de bases de datos vienen blindados para conexiones locales (`localhost`), por lo que es imperativo tener conocimientos de administración en Linux para modificar las directivas de red (`bind-address`), abrir puertos en el firewall de manera segura y aplicar métodos de autenticación compatibles. Finalmente, se logró un sistema interactivo y funcional en C# que administra los datos de manera remota, centralizando la información y permitiendo escalabilidad.
 
 ## 📊 Resultados
-- 📈 [Resultados.pdf](Resultados/Resultados_Comandos_Copiar_Borrar.pdf)
-
+- 📈 [Resultados.pdf](Resultados/Resultados_Conexion_Remota_BD.pdf)
