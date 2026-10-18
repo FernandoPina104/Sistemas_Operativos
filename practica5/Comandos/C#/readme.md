@@ -1,6 +1,4 @@
-// 🚀 1. Punto de entrada de la aplicación (Program.cs)
-// Explicación: Este archivo es el punto de inicio de tu programa. Su única función es configurar los estilos 
-// visuales básicos de Windows y lanzar la ventana principal (MainForm) en cuanto el usuario ejecuta la aplicación.
+🚀 1. Punto de entrada de la aplicación (Program.cs).Explicación: Este archivo es el punto de inicio de tu programa. Su única función es configurar los estilos visuales básicos de Windows y lanzar la ventana principal (MainForm) en cuanto el usuario ejecuta la aplicación.
 
 ```csharp
 using System;
@@ -23,11 +21,7 @@ namespace AgendaApp
 // =========================================================================================================
 // =========================================================================================================
 ```
-
-// 🎨 2. Diseño de la Interfaz Gráfica (MainForm.Designer.cs)
-// Explicación: Este archivo es el "esqueleto" visual de tu agenda. Aquí se define por código toda la estructura 
-// de la ventana: las posiciones, tamaños y colores de los botones, las cajas de texto, las pestañas de 
-// navegación y la tabla de datos (DataGridView).
+🎨 2. Diseño de la Interfaz Gráfica (MainForm.Designer.cs). Explicación: Este archivo es el "esqueleto" visual de tu agenda. Aquí se define por código toda la estructura de la ventana: las posiciones, tamaños y colores de los botones, las cajas de texto, las pestañas de navegación y la tabla de datos (DataGridView).
 
 ```csharp
 
@@ -343,11 +337,7 @@ namespace AgendaApp
 // =========================================================================================================
 // =========================================================================================================
 ```
-
-// 🧠 3. Lógica del Sistema (MainForm.cs)
-// Explicación: Este es el "cerebro" o núcleo de la aplicación. Aquí se aloja toda la lógica de programación 
-// detrás del diseño, incluyendo la conexión remota a la base de datos MySQL, la detección automática de 
-// cambios en tu red (para mantener la IP actualizada), las reglas de validación de los campos y la optimización de fotos.
+🧠 3. Lógica del Sistema (MainForm.cs). Explicación: Este es el "cerebro" o núcleo de la aplicación. Aquí se aloja toda la lógica de programación detrás del diseño, incluyendo la conexión remota a la base de datos MySQL, la detección automática de cambios en tu red (para mantener la IP actualizada), las reglas de validación de los campos y la optimización de fotos.
 
 ```csharp
 
