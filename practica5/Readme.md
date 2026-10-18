@@ -82,4 +82,4 @@ Familiarizarse con la configuración de servicios de red en Linux y la conectivi
 La práctica demostró exitosamente la viabilidad y el proceso técnico para separar la lógica de presentación (Windows) del almacenamiento de datos (Ubuntu). Se comprobó que por defecto los motores de bases de datos vienen blindados para conexiones locales (`localhost`), por lo que es imperativo tener conocimientos de administración en Linux para modificar las directivas de red (`bind-address`), abrir puertos en el firewall de manera segura y aplicar métodos de autenticación compatibles. Finalmente, se logró un sistema interactivo y funcional en C# que administra los datos de manera remota, centralizando la información y permitiendo escalabilidad.
 
 ## 📊 Resultados
-- 📈 [Resultados.pdf](Resultados/Resultados_Conexion_Remota_BD.pdf)
+- 📈 [Resultados.pdf](Resultados/Resultados_Práctica5.pdf)
