@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Atlas Solar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: a single dark column. A distance ruler on top, planet picker, detail sheet, then a weight calculator. */
+:root{
+  --bg:#070b14; --panel:#0e1524; --line:#1f2a40; --fg:#e8ecf5; --muted:#8c98b3; --sun:#ffb547;
+  --f-display:"Syne","Arial Black",sans-serif; --f-body:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:32px 56px}
+.wrap{max-width:920px;margin-inline:auto}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.4rem,9vw,4.6rem);line-height:.95;margin:0 0 12px;text-wrap:balance;letter-spacing:-.02em}
+h1 span{color:var(--sun)}
+.lede{color:var(--muted);max-width:56ch;margin:0 0 32px}
+h2{font-family:var(--f-display);font-weight:600;font-size:1.15rem;margin:0 0 12px;letter-spacing:.01em}
+.label{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+section{margin-block:36px}
+
+/* distance ruler */
+.ruler{position:relative;height:84px;margin-inline:8px;border-bottom:1px solid var(--line)}
+.ruler .sun{position:absolute;left:-8px;bottom:-9px;width:18px;height:18px;border-radius:50%;background:var(--sun);box-shadow:0 0 22px 4px rgba(255,181,71,.45)}
+.tick{position:absolute;bottom:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 2px;font:inherit}
+.tick i{display:block;width:1px;height:26px;background:var(--line)}
+.tick b{font-family:var(--f-mono);font-weight:400;font-size:.62rem}
+.tick .dot{width:12px;height:12px;border-radius:50%;margin-bottom:-1px}
+.tick[aria-pressed="true"] b{color:var(--fg)}
+.tick[aria-pressed="true"] i{background:var(--sun)}
+.tick:focus-visible,.pick:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+.rulernote{display:flex;justify-content:space-between;margin:10px 8px 0}
+
+/* picker */
+.picker{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media(min-width:640px){.picker{grid-template-columns:repeat(8,1fr)}}
+.pick{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 10px;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--fg);cursor:pointer;font:inherit;min-width:0}
+.pick .orb{border-radius:50%;flex:none}
+.pick span{font-size:.8rem}
+.pick[aria-pressed="true"]{border-color:var(--sun);background:#16203a}
+.orbbox{height:46px;display:flex;align-items:center}
+
+/* detail */
+.sheet{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 20px}
+.sheet h3{font-family:var(--f-display);font-weight:800;font-size:2.2rem;line-height:1;margin:0 0 6px}
+.sheet p{margin:0 0 20px;color:var(--muted);max-width:60ch}
+dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 20px;margin:0}
+dl div{min-width:0;border-top:1px solid var(--line);padding-top:8px}
+dt{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+dd{margin:2px 0 0;font-size:1.1rem;font-variant-numeric:tabular-nums}
+
+/* calculator */
+.calc{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:720px){.calc{grid-template-columns:240px 1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+input[type=number]{background:var(--bg);border:1px solid var(--line);color:var(--fg);font:inherit;font-family:var(--f-mono);font-size:1.3rem;padding:10px 12px;border-radius:8px;width:100%}
+input[type=number]:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
+.bars{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:78px 1fr 92px;align-items:center;gap:10px;font-size:.9rem}
+.track{height:12px;background:var(--bg);border-radius:6px;overflow:hidden}
+.fill{height:100%;background:var(--sun);border-radius:6px;width:0;transition:width .35s}
+.row output{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+.row.earth .fill{background:#6fb4ff}
+@media(prefers-reduced-motion:reduce){.fill{transition:none}}
+footer{color:var(--muted);font-size:.8rem;margin-top:40px}
+</style>
+
+<div class="wrap">
+  <p class="label">8 planetas · 1 estrella</p>
+  <h1>Atlas <span>Solar</span></h1>
+  <p class="lede">Elige un planeta para ver su tamaño, su día, su año y cuánto tarda en llegarle la luz del Sol. Abajo puedes calcular cuánto pesarías en cada uno.</p>
+
+  <section aria-labelledby="h-dist">
+    <h2 id="h-dist">Distancia al Sol</h2>
+    <div class="ruler" id="ruler"><div class="sun" title="Sol"></div></div>
+    <div class="rulernote label"><span>Sol</span><span>escala logarítmica, en unidades astronómicas (UA)</span></div>
+  </section>
+
+  <section aria-labelledby="h-pick">
+    <h2 id="h-pick">Planetas</h2>
+    <div class="picker" id="picker"></div>
+  </section>
+
+  <section aria-live="polite">
+    <div class="sheet" id="sheet"></div>
+  </section>
+
+  <section aria-labelledby="h-peso">
+    <h2 id="h-peso">¿Cuánto pesarías?</h2>
+    <div class="calc">
+      <div class="field">
+        <label class="label" for="masa">Tu masa en kg</label>
+        <input id="masa" type="number" min="1" max="300" value="70" inputmode="decimal">
+        <span class="label" style="text-transform:none;letter-spacing:0">Se muestra el peso como kilos-fuerza: lo que marcaría una báscula en cada superficie.</span>
+      </div>
+      <div class="bars" id="bars"></div>
+    </div>
+  </section>
+
+  <footer>Valores medios redondeados. El número de lunas sigue cambiando con cada descubrimiento, por eso Júpiter y Saturno aparecen como mínimos.</footer>
+</div>
+
+<script>
+var P=[
+ {n:"Mercurio",c:"#b5a79a",au:0.39,d:4879,dia:"59 días terrestres",anio:"88 días",lunas:"0",t:"167 °C",g:3.70,txt:"El más cercano al Sol y el más pequeño. Casi no tiene atmósfera, así que la diferencia entre el día y la noche supera los 500 °C."},
+ {n:"Venus",c:"#e8c27a",au:0.72,d:12104,dia:"243 días terrestres",anio:"225 días",lunas:"0",t:"464 °C",g:8.87,txt:"Gira al revés y tan despacio que su día dura más que su año. Su atmósfera densa lo hace más caliente que Mercurio."},
+ {n:"Tierra",c:"#6fb4ff",au:1.00,d:12742,dia:"24 horas",anio:"365,25 días",lunas:"1",t:"15 °C",g:9.81,txt:"El único mundo conocido con agua líquida en superficie y vida. De aquí sale la unidad de distancia: 1 UA."},
+ {n:"Marte",c:"#d9674a",au:1.52,d:6779,dia:"24,6 horas",anio:"687 días",lunas:"2",t:"−65 °C",g:3.71,txt:"Su día casi coincide con el nuestro. Tiene el volcán más alto conocido, el Monte Olimpo, de unos 22 km de altura."},
+ {n:"Júpiter",c:"#d3b08c",au:5.20,d:139820,dia:"9,9 horas",anio:"11,9 años",lunas:"más de 95",t:"−110 °C",g:24.79,txt:"Más masa que todos los demás planetas juntos. La Gran Mancha Roja es una tormenta mayor que la Tierra."},
+ {n:"Saturno",c:"#e6d29b",au:9.54,d:116460,dia:"10,7 horas",anio:"29,5 años",lunas:"más de 270",t:"−140 °C",g:10.44,txt:"Sus anillos son hielo y roca en una capa muy delgada. Su densidad media es menor que la del agua."},
+ {n:"Urano",c:"#8fd6e0",au:19.2,d:50724,dia:"17,2 horas",anio:"84 años",lunas:"más de 25",t:"−195 °C",g:8.69,txt:"Gira inclinado unos 98°, casi rodando de lado sobre su órbita. Cada polo pasa 42 años seguidos a oscuras."},
+ {n:"Neptuno",c:"#5b7bf0",au:30.1,d:49244,dia:"16,1 horas",anio:"165 años",lunas:"más de 15",t:"−200 °C",g:11.15,txt:"El más lejano. Desde su descubrimiento en 1846 apenas ha completado una vuelta al Sol."}
+];
+var MIN=Math.log(0.3),MAX=Math.log(31);
+function fmt(n,dec){return n.toLocaleString("es-MX",{maximumFractionDigits:dec||0})}
+function luz(au){var m=au*8.317;if(m<60)return fmt(m,1)+" min";return fmt(m/60,1)+" h"}
+var sel=2,ruler=document.getElementById("ruler"),picker=document.getElementById("picker"),sheet=document.getElementById("sheet"),bars=document.getElementById("bars");
+function orbSize(p){return 14+Math.sqrt(p.d/139820)*30}
+P.forEach(function(p,i){
+  var t=document.createElement("button");t.className="tick";t.type="button";t.setAttribute("aria-label",p.n);
+  t.style.left=((Math.log(p.au)-MIN)/(MAX-MIN)*100)+"%";
+  t.innerHTML='<span class="dot" style="background:'+p.c+'"></span><i></i><b>'+fmt(p.au,2)+'</b>';
+  t.onclick=function(){show(i)};ruler.appendChild(t);p.tick=t;
+  var b=document.createElement("button");b.className="pick";b.type="button";
+  var s=orbSize(p);
+  b.innerHTML='<span class="orbbox"><span class="orb" style="width:'+s+'px;height:'+s+'px;background:'+p.c+'"></span></span><span>'+p.n+'</span>';
+  b.onclick=function(){show(i)};picker.appendChild(b);p.pick=b;
+});
+function show(i){
+  sel=i;var p=P[i];
+  P.forEach(function(q,j){q.tick.setAttribute("aria-pressed",j===i);q.pick.setAttribute("aria-pressed",j===i)});
+  sheet.innerHTML='<p class="label">Planeta '+(i+1)+' desde el Sol</p><h3>'+p.n+'</h3><p>'+p.txt+'</p><dl>'+
+   dd("Diámetro",fmt(p.d)+" km")+dd("Distancia al Sol",fmt(p.au,2)+" UA ("+fmt(p.au*149.6,0)+" millones de km)")+
+   dd("Luz del Sol tarda",luz(p.au))+dd("Duración del día",p.dia)+dd("Duración del año",p.anio)+
+   dd("Lunas",p.lunas)+dd("Temperatura media",p.t)+dd("Gravedad en superficie",fmt(p.g,2)+" m/s²")+'</dl>';
+}
+function dd(a,b){return "<div><dt>"+a+"</dt><dd>"+b+"</dd></div>"}
+var input=document.getElementById("masa");
+P.forEach(function(p){
+  var r=document.createElement("div");r.className="row"+(p.n==="Tierra"?" earth":"");
+  r.innerHTML='<span>'+p.n+'</span><div class="track"><div class="fill"></div></div><output></output>';
+  bars.appendChild(r);p.row=r;
+});
+function calc(){
+  var m=parseFloat(input.value);if(!(m>0))m=0;
+  P.forEach(function(p){
+    var w=m*p.g/9.81;
+    p.row.querySelector("output").textContent=fmt(w,1)+" kg";
+    p.row.querySelector(".fill").style.width=Math.min(100,w/(m*24.79/9.81||1)*100)+"%";
+  });
+}
+input.addEventListener("input",calc);
+show(2);calc();
+</script>
+
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cuaderno de Oaxaca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Figtree:wght@400;500;600&family=Fragment+Mono&display=swap" rel="stylesheet">
+<style>
+/* Layout: big title with a woven-stripe band, day tabs, a stop list you can tick off, then a short field guide. */
+:root{
+  --bg:#f7f3f5; --card:#ffffff; --fg:#241a26; --muted:#6d5f71; --line:#e3d9e4; --marigold:#d96b00; --marigold-fg:#ffffff; --rose:#c61f67; --teal:#0f7f86; --soft:#fbe9d6;
+  --f-display:"Rozha One","Georgia",serif; --f-body:"Figtree",system-ui,sans-serif; --f-mono:"Fragment Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#17101b;--card:#21172a;--fg:#f6eef6;--muted:#b6a5ba;--line:#37283f;--marigold:#ff9b21;--marigold-fg:#1a0e00;--rose:#ff6aa6;--teal:#4cc9d1;--soft:#3a2418;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17101b;--card:#21172a;--fg:#f6eef6;--muted:#b6a5ba;--line:#37283f;--marigold:#ff9b21;--marigold-fg:#1a0e00;--rose:#ff6aa6;--teal:#4cc9d1;--soft:#3a2418;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:0 56px}
+.wrap{max-width:900px;margin-inline:auto}
+.band{height:26px;margin-inline:-16px;background:
+  repeating-linear-gradient(90deg,var(--marigold) 0 28px,var(--rose) 28px 44px,var(--teal) 44px 60px,var(--fg) 60px 66px,var(--marigold) 66px 80px)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(2.8rem,11vw,5.6rem);line-height:.95;margin:30px 0 12px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--rose)}
+.lede{max-width:58ch;color:var(--muted);margin:0 0 26px}
+.label{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.tab{font:inherit;font-weight:600;border:1.5px solid var(--fg);background:transparent;color:var(--fg);border-radius:10px;padding:9px 14px;cursor:pointer;text-align:left}
+.tab small{display:block;font-family:var(--f-mono);font-weight:400;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
+.tab[aria-selected="true"]{background:var(--marigold);border-color:var(--marigold);color:var(--marigold-fg)}
+.tab:focus-visible,.stop input:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.dayhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;margin-bottom:6px}
+h2{font-family:var(--f-display);font-weight:400;font-size:2rem;margin:0}
+.progress{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.day-note{color:var(--muted);max-width:60ch;margin:0 0 14px}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.stop{display:grid;grid-template-columns:auto 64px 1fr;gap:6px 12px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 14px;min-width:0}
+.stop input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--rose)}
+.stop time{font-family:var(--f-mono);font-size:.85rem;color:var(--marigold);padding-top:3px;font-variant-numeric:tabular-nums}
+.stop b{display:block}
+.stop span{color:var(--muted);font-size:.93rem}
+.stop.done{background:var(--soft)}
+.stop.done b{text-decoration:line-through;text-decoration-thickness:1px}
+.guide{margin-top:44px;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
+.fact h3{font-family:var(--f-display);font-weight:400;font-size:1.35rem;margin:0 0 6px}
+.fact p{margin:0;color:var(--muted);font-size:.95rem}
+.moles{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.moles span{font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--fg)}
+h2.sec{margin:44px 0 6px}
+</style>
+
+<div class="wrap">
+  <div class="band" aria-hidden="true"></div>
+  <p class="label" style="margin-top:22px">Valles Centrales · cuatro días · a pie y en taxi colectivo</p>
+  <h1>Cuaderno de <em>Oaxaca</em></h1>
+  <p class="lede">Un itinerario para conocer la ciudad, sus mercados, las ruinas zapotecas y los pueblos artesanos del valle. Marca cada parada cuando la visites.</p>
+
+  <div class="tabs" role="tablist" id="tabs" aria-label="Días del viaje"></div>
+  <div id="day" role="tabpanel"></div>
+
+  <h2 class="sec">Para llevar en la cabeza</h2>
+  <div class="guide">
+    <div class="fact"><h3>Los siete moles</h3><p>La cocina oaxaqueña presume siete moles tradicionales. Prueba al menos tres distintos.</p>
+      <div class="moles"><span>negro</span><span>rojo</span><span>coloradito</span><span>amarillo</span><span>verde</span><span>manchamanteles</span><span>chichilo</span></div></div>
+    <div class="fact"><h3>Cuándo ir</h3><p>Para Día de Muertos, a finales de octubre y principios de noviembre, hay altares y comparsas por toda la ciudad. En julio se celebra la Guelaguetza, los dos últimos lunes del mes. Reserva con meses de anticipación en ambas fechas.</p></div>
+    <div class="fact"><h3>Altura y sol</h3><p>La ciudad está a unos 1,550 m sobre el nivel del mar. Monte Albán, en el cerro, queda unos cuatrocientos metros más arriba: lleva gorra, agua y llega temprano.</p></div>
+    <div class="fact"><h3>Mezcal</h3><p>En las palenques se muestra todo el proceso, desde el horno de piedra hasta la destilación. Pregunta por el tipo de agave y bebe despacio, con naranja y sal de gusano si te la ofrecen.</p></div>
+  </div>
+</div>
+
+<script>
+var DAYS=[
+ {t:"Centro histórico",sub:"Día 1",note:"Un día corto y caminable para tomar el pulso a la ciudad.",stops:[
+  ["09:00","Zócalo y Catedral","Desayuna chocolate con pan de yema bajo los portales y mira cómo abre la plaza."],
+  ["10:30","Templo de Santo Domingo","Fachada barroca y bóvedas doradas. Pasa por el jardín etnobotánico del ex convento si tienes tiempo."],
+  ["12:00","Museo de las Culturas de Oaxaca","Está en el mismo ex convento. Aquí se exhibe el tesoro de la Tumba 7 de Monte Albán."],
+  ["14:30","Mercado 20 de Noviembre","Entra al pasillo del humo, elige la carne cruda y que te la asen en el momento."],
+  ["19:00","Cena de tlayudas","Tortilla grande, tostada, con asiento, quesillo y tasajo. Mejor compartirla."]]},
+ {t:"Monte Albán",sub:"Día 2",note:"Sube por la mañana, cuando hace menos calor y hay menos gente.",stops:[
+  ["08:30","Salida hacia Monte Albán","Son unos 9 km desde el centro, por una carretera que sube en curvas. Hay transporte turístico y taxis desde el centro."],
+  ["09:30","Ciudad zapoteca","Fundada hacia el 500 a. C. sobre una cima aplanada. Recorre la Gran Plaza, el Juego de Pelota y los Danzantes."],
+  ["12:30","Museo de sitio","Cerámica, joyería y las lápidas más antiguas del sitio."],
+  ["15:00","Comida en Jalatlaco","Barrio de casas bajas con murales y calles empedradas."],
+  ["17:30","Basílica de la Soledad","Patrona de Oaxaca. Cerca hay tiendas de chocolate que muelen cacao frente a ti."]]},
+ {t:"Valles Centrales",sub:"Día 3",note:"Contrata un taxi por el día o únete a un recorrido compartido. Son muchas paradas.",stops:[
+  ["09:00","Árbol del Tule","Un ahuehuete de más de mil años, con uno de los troncos más anchos del mundo."],
+  ["10:00","Teotitlán del Valle","Tapetes de lana teñidos con grana cochinilla, índigo y plantas locales. Pregunta por los tintes naturales."],
+  ["12:30","Mitla","Palacios zapotecas decorados con grecas hechas de piezas de piedra encajadas una a una."],
+  ["14:30","Hierve el Agua","Cascadas petrificadas por el carbonato de calcio y albercas naturales con vista al valle."],
+  ["17:30","Palenque de mezcal","Camino de regreso, en Santiago Matatlán, que se presenta como la capital mundial del mezcal."]]},
+ {t:"Sabores y artesanía",sub:"Día 4",note:"Un día para comer, comprar y despedirse con calma.",stops:[
+  ["09:00","Clase de cocina","Muchas escuelas empiezan en el Mercado de la Merced y terminan con un mole hecho por ti."],
+  ["13:00","Mercado Benito Juárez","Quesillo, chapulines, tejate y pan de yema."],
+  ["15:00","Calle Macedonio Alcalá","Peatonal con galerías, tiendas de barro negro de San Bartolo Coyotepec y alebrijes."],
+  ["17:30","Paseo en el Cerro del Fortín","Atardecer sobre la ciudad con vista de las torres de Santo Domingo."],
+  ["20:00","Cena de despedida","Prueba el mole negro con una copa de mezcal artesanal."]]}
+];
+var cur=0,state={};
+try{state=JSON.parse(localStorage.getItem("oaxaca-checks")||"{}")}catch(e){state={}}
+function save(){try{localStorage.setItem("oaxaca-checks",JSON.stringify(state))}catch(e){}}
+var tabs=document.getElementById("tabs"),day=document.getElementById("day");
+DAYS.forEach(function(d,i){
+  var b=document.createElement("button");b.type="button";b.className="tab";b.setAttribute("role","tab");
+  b.innerHTML=d.t+"<small>"+d.sub+"</small>";b.onclick=function(){cur=i;draw()};tabs.appendChild(b);
+});
+function draw(){
+  var d=DAYS[cur];
+  Array.prototype.forEach.call(tabs.children,function(b,i){b.setAttribute("aria-selected",i===cur)});
+  var done=d.stops.filter(function(s,j){return state[cur+"-"+j]}).length;
+  var h='<div class="dayhead"><h2>'+d.t+'</h2><span class="progress">'+done+' de '+d.stops.length+' paradas</span></div><p class="day-note">'+d.note+'</p><ul>';
+  d.stops.forEach(function(s,j){
+    var k=cur+"-"+j,c=state[k]?" checked":"";
+    h+='<li class="stop'+(state[k]?" done":"")+'"><input type="checkbox" id="c'+k+'" data-k="'+k+'"'+c+' aria-label="Visitado: '+s[1]+'"><time>'+s[0]+'</time><div><b>'+s[1]+'</b><span>'+s[2]+'</span></div></li>';
+  });
+  day.innerHTML=h+"</ul>";
+}
+day.addEventListener("change",function(e){var k=e.target.dataset&&e.target.dataset.k;if(!k)return;state[k]=e.target.checked;save();draw();var el=document.getElementById("c"+k);if(el)el.focus()});
+draw();
+</script>
+
+</html>

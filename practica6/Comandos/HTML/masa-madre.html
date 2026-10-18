@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Pan de Masa Madre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: recipe on the left as a calculator, bake schedule on the right; stacks on phones. */
+:root{
+  --bg:#edf0ea; --card:#f9faf7; --line:#cfd6c9; --fg:#1b2723; --muted:#5d6c65; --accent:#2f5d50; --accent-fg:#ffffff; --soft:#dbe6df;
+  --f-display:"Bricolage Grotesque","Arial Black",sans-serif; --f-body:"Source Sans 3",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121a17;--card:#1a2420;--line:#2c3a34;--fg:#e7eee9;--muted:#9bb0a5;--accent:#7fc7ad;--accent-fg:#0d1512;--soft:#22322b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121a17;--card:#1a2420;--line:#2c3a34;--fg:#e7eee9;--muted:#9bb0a5;--accent:#7fc7ad;--accent-fg:#0d1512;--soft:#22322b;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.5;padding-inline:16px;padding-block:32px 56px}
+.wrap{max-width:960px;margin-inline:auto}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.3rem,8vw,4rem);line-height:1;margin:0 0 10px;letter-spacing:-.02em;text-wrap:balance}
+.lede{color:var(--muted);max-width:58ch;margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:500;font-size:1.3rem;margin:0 0 16px}
+.label{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.grid{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 20px;min-width:0}
+.ctl{display:grid;grid-template-columns:1fr auto;gap:2px 12px;margin-bottom:18px}
+.ctl label{font-weight:600}
+.ctl output{font-family:var(--f-mono);font-size:.95rem;text-align:right}
+.ctl input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--accent)}
+.ctl small{grid-column:1/-1;color:var(--muted);font-size:.85rem}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th{font-family:var(--f-mono);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:8px 0;border-bottom:1px solid var(--line)}
+td{padding:11px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+td:nth-child(2),td:nth-child(3),th:nth-child(2),th:nth-child(3){text-align:right;font-family:var(--f-mono)}
+td:nth-child(2){font-weight:500;font-size:1.05rem}
+tr.total td{border-bottom:0;font-weight:600;color:var(--accent)}
+.tablewrap{overflow-x:auto}
+input[type=time]{font:inherit;font-family:var(--f-mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.start{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+ol{list-style:none;margin:0;padding:0;display:grid;gap:0}
+li{display:grid;grid-template-columns:76px 1fr;gap:6px 14px;padding:12px 0;border-bottom:1px solid var(--line)}
+li:last-child{border-bottom:0}
+li time{font-family:var(--f-mono);font-size:.95rem;color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums}
+li time small{display:block;color:var(--muted);font-size:.68rem;font-weight:400}
+li b{display:block}
+li span{color:var(--muted);font-size:.92rem}
+.note{margin-top:22px;padding:14px 16px;background:var(--soft);border-radius:10px;font-size:.92rem}
+</style>
+
+<div class="wrap">
+  <p class="label">Hogaza de 75 % de hidratación · fermentación en frío</p>
+  <h1>Pan de Masa Madre</h1>
+  <p class="lede">Elige cuánta harina quieres usar y la receta se ajusta en gramos con porcentajes del panadero. Pon la hora de inicio y el horario completo se calcula solo.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Receta</h2>
+      <div class="ctl">
+        <label for="flour">Harina total</label><output id="o-flour"></output>
+        <input id="flour" type="range" min="300" max="1000" step="25" value="500">
+        <small>Incluye la harina que viene dentro de la masa madre.</small>
+      </div>
+      <div class="ctl">
+        <label for="hyd">Hidratación</label><output id="o-hyd"></output>
+        <input id="hyd" type="range" min="60" max="85" step="1" value="75">
+        <small>Más agua da miga más abierta y una masa más difícil de manejar.</small>
+      </div>
+      <div class="ctl">
+        <label for="st">Masa madre</label><output id="o-st"></output>
+        <input id="st" type="range" min="10" max="30" step="1" value="20">
+        <small>Con 100 % de hidratación: mitad harina, mitad agua.</small>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Ingrediente</th><th>Añadir</th><th>% panadero</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Horario</h2>
+      <div class="start"><label for="t0" class="label">Empiezas a las</label><input id="t0" type="time" value="15:00"></div>
+      <ol id="plan"></ol>
+      <p class="note">Los tiempos de fermentación suponen una cocina a unos 24 °C. Si hace más calor, acorta la fermentación en bloque; si hace frío, alárgala hasta que la masa crezca cerca de un 50 %.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+var $=function(id){return document.getElementById(id)};
+function g(n){return Math.round(n).toLocaleString("es-MX")+" g"}
+function calc(){
+  var T=+$("flour").value,H=+$("hyd").value/100,S=+$("st").value/100;
+  var starter=T*S, flour=T-starter/2, water=T*H-starter/2, salt=T*0.02;
+  var total=flour+water+starter+salt;
+  $("o-flour").textContent=g(T);$("o-hyd").textContent=Math.round(H*100)+" %";$("o-st").textContent=Math.round(S*100)+" %";
+  $("tbody").innerHTML=
+    row("Harina de trigo",flour,flour/T*100)+row("Agua",water,water/T*100)+row("Masa madre activa",starter,S*100)+row("Sal",salt,2)+
+    '<tr class="total"><td>Masa total</td><td>'+g(total)+'</td><td>'+Math.round(total/T*100)+' %</td></tr>';
+  return {flour:flour,water:water,starter:starter,salt:salt};
+}
+function row(a,b,c){return "<tr><td>"+a+"</td><td>"+g(b)+"</td><td>"+c.toFixed(c%1?1:0).replace(".",",")+" %</td></tr>"}
+var steps=[
+ [0,"Autólisis","Mezcla solo la harina y el agua. Tapa y deja reposar una hora."],
+ [60,"Añade masa madre y sal","Integra con las manos mojadas hasta que no queden grumos."],
+ [90,"Primer pliegue","Estira un lado de la masa y dóblalo hacia el centro. Repite por los cuatro lados."],
+ [120,"Segundo pliegue","La masa ya debe sentirse más tensa y elástica."],
+ [150,"Tercer pliegue","El último. Después déjala crecer sin tocarla."],
+ [330,"Divide y preforma","La masa creció cerca de un 50 % y tiene burbujas en los bordes. Boleo suave y 20 minutos de descanso."],
+ [350,"Formado final","Dale tensión y colócala con la costura hacia arriba en un banneton enharinado."],
+ [370,"Reposo en frío","Al refrigerador, cubierta, entre 10 y 14 horas."],
+ [1090,"Precalienta el horno","Olla de hierro dentro, a 250 °C, durante una hora completa."],
+ [1150,"Hornea tapado","Vuelca la masa, haz un corte profundo y hornea 20 minutos con tapa."],
+ [1170,"Hornea destapado","Baja a 230 °C y hornea 25 minutos más, hasta que la corteza quede muy oscura."],
+ [1195,"Enfría","Espera una hora sobre una rejilla antes de cortarlo. La miga todavía se está asentando."]
+];
+function plan(){
+  var v=$("t0").value||"15:00",p=v.split(":"),base=(+p[0])*60+(+p[1]);
+  var h="";
+  steps.forEach(function(s){
+    var m=base+s[0],day=Math.floor(m/1440),mm=((m%1440)+1440)%1440;
+    var hh=String(Math.floor(mm/60)).padStart(2,"0"),mi=String(mm%60).padStart(2,"0");
+    h+='<li><time>'+hh+':'+mi+(day>0?'<small>día +'+day+'</small>':'<small>hoy</small>')+'</time><div><b>'+s[1]+'</b><span>'+s[2]+'</span></div></li>';
+  });
+  $("plan").innerHTML=h;
+}
+["flour","hyd","st"].forEach(function(id){$(id).addEventListener("input",calc)});
+$("t0").addEventListener("input",plan);
+calc();plan();
+</script>
+
+</html>

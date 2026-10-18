@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Teclado de Escalas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: a poster-like header, controls, then a two-octave keyboard that fills the width. Scale tones light up in yellow. */
+:root{
+  --bg:#f2f1ee; --fg:#14151a; --muted:#5f616b; --line:#d6d4cf; --blue:#2447e0; --blue-fg:#ffffff; --hit:#ffd23f; --hit-fg:#14151a;
+  --white-key:#ffffff; --black-key:#16171d; --black-hit:#c99a00; --card:#fbfaf8;
+  --f-display:"Archivo Black","Arial Black",sans-serif; --f-body:"Archivo",system-ui,sans-serif; --f-mono:"DM Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#101116;--fg:#f1f1ee;--muted:#9a9ca6;--line:#2a2c36;--blue:#7d97ff;--blue-fg:#0b0c12;--hit:#ffd23f;--white-key:#e9e8e4;--black-key:#050508;--black-hit:#c99a00;--card:#171821;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101116;--fg:#f1f1ee;--muted:#9a9ca6;--line:#2a2c36;--blue:#7d97ff;--blue-fg:#0b0c12;--hit:#ffd23f;--white-key:#e9e8e4;--black-key:#050508;--black-hit:#c99a00;--card:#171821;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:32px 56px}
+.wrap{max-width:980px;margin-inline:auto}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(2.6rem,10vw,5.4rem);line-height:.92;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--blue)}
+.lede{max-width:56ch;color:var(--muted);margin:0 0 28px}
+.label{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.controls{display:grid;gap:18px;margin-bottom:22px}
+.group{display:flex;flex-direction:column;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-weight:600;font-size:.9rem;padding:8px 12px;border:1.5px solid var(--fg);background:transparent;color:var(--fg);border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--blue-fg)}
+.chip:focus-visible,.key:focus-visible,.btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.readout{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;margin:0 0 14px}
+.readout strong{font-family:var(--f-display);font-weight:400;font-size:1.7rem}
+.readout span{font-family:var(--f-mono);font-size:.95rem;color:var(--muted)}
+.btn{font:inherit;font-weight:600;padding:10px 18px;border-radius:8px;border:0;background:var(--fg);color:var(--bg);cursor:pointer}
+
+/* keyboard */
+.kbwrap{overflow-x:auto;padding-bottom:6px}
+.kb{position:relative;height:210px;min-width:640px;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.key{position:absolute;top:0;border:1px solid var(--line);cursor:pointer;padding:0;font:inherit}
+.key.w{background:var(--white-key);height:100%;border-radius:0 0 7px 7px;color:var(--muted);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;font-family:var(--f-mono);font-size:.68rem;z-index:1}
+.key.b{background:var(--black-key);height:62%;border-radius:0 0 5px 5px;z-index:2;border-color:var(--black-key)}
+.key.w.in{background:var(--hit);color:var(--hit-fg);border-color:#d9a900}
+.key.b.in{background:var(--black-hit);border-color:var(--black-hit)}
+.key.root::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:30px;width:12px;height:12px;border-radius:50%;background:var(--blue)}
+.key.b.root::after{bottom:14px;background:var(--blue-fg)}
+.key.down{filter:brightness(.88)}
+
+.chords{margin-top:30px}
+.chordrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px;margin-top:10px}
+.chord{font:inherit;text-align:left;border:1.5px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:10px 12px;cursor:pointer;min-width:0}
+.chord:hover{border-color:var(--blue)}
+.chord:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.chord b{display:block;font-family:var(--f-mono);font-weight:500;font-size:.7rem;color:var(--muted)}
+.chord span{font-weight:600}
+.hint{margin-top:26px;color:var(--muted);font-size:.9rem;max-width:62ch}
+</style>
+
+<div class="wrap">
+  <p class="label">2 octavas · sonido en tu navegador</p>
+  <h1>Teclado de <em>Escalas</em></h1>
+  <p class="lede">Elige una nota y un modo. Las teclas de la escala se iluminan, el círculo azul marca la tónica y puedes tocar con el mouse, el dedo o las teclas de tu computadora.</p>
+
+  <div class="controls">
+    <div class="group"><span class="label" id="l-root">Tónica</span><div class="chips" id="roots" role="group" aria-labelledby="l-root"></div></div>
+    <div class="group"><span class="label" id="l-scale">Escala</span><div class="chips" id="scales" role="group" aria-labelledby="l-scale"></div></div>
+  </div>
+
+  <div class="readout"><strong id="name"></strong><span id="notes"></span><span id="ivs"></span></div>
+  <p style="margin:0 0 14px"><button class="btn" id="play" type="button">Tocar la escala</button></p>
+
+  <div class="kbwrap"><div class="kb" id="kb" role="group" aria-label="Teclado"></div></div>
+
+  <div class="chords" id="chords">
+    <span class="label">Acordes de la escala (apilando terceras)</span>
+    <div class="chordrow" id="chordrow"></div>
+  </div>
+
+  <p class="hint">Teclas del teclado de tu computadora: la fila A, S, D, F, G, H, J, K, L toca las notas blancas desde Do; W, E, T, Y, U, O, P tocan las negras entre ellas.</p>
+</div>
+
+<script>
+var NAMES=["Do","Do#","Re","Re#","Mi","Fa","Fa#","Sol","Sol#","La","La#","Si"];
+var SCALES=[
+ {n:"Mayor",iv:[0,2,4,5,7,9,11]},
+ {n:"Menor natural",iv:[0,2,3,5,7,8,10]},
+ {n:"Dórica",iv:[0,2,3,5,7,9,10]},
+ {n:"Mixolidia",iv:[0,2,4,5,7,9,10]},
+ {n:"Pentatónica menor",iv:[0,3,5,7,10]},
+ {n:"Blues",iv:[0,3,5,6,7,10]}
+];
+var root=0,sc=0,FIRST=48; /* Do central menos una octava: MIDI 48 = C3. Dos octavas + Do final. */
+var COUNT=25,whiteIdx=[0,2,4,5,7,9,11];
+var kb=document.getElementById("kb"),keys=[];
+function isBlack(p){return [1,3,6,8,10].indexOf(p%12)>-1}
+var whites=0;for(var i=0;i<COUNT;i++)if(!isBlack(i))whites++;
+var wpct=100/whites,wi=0;
+for(var i=0;i<COUNT;i++){
+  var b=document.createElement("button");b.type="button";b.dataset.i=i;
+  var black=isBlack(i);b.className="key "+(black?"b":"w");
+  if(black){b.style.left=(wi*wpct-wpct*0.3)+"%";b.style.width=(wpct*0.6)+"%";b.setAttribute("aria-label",NAMES[i%12])}
+  else{b.style.left=(wi*wpct)+"%";b.style.width=wpct+"%";b.textContent=NAMES[i%12];wi++}
+  kb.appendChild(b);keys.push(b);
+}
+var AC=null;
+function ctx(){if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(C)AC=new C()}if(AC&&AC.state==="suspended")AC.resume();return AC}
+function tone(midi,dur,when){
+  var c=ctx();if(!c)return;
+  var t=c.currentTime+(when||0),f=440*Math.pow(2,(midi-69)/12);
+  var o=c.createOscillator(),o2=c.createOscillator(),g=c.createGain();
+  o.type="triangle";o2.type="sine";o.frequency.value=f;o2.frequency.value=f*2;
+  var g2=c.createGain();g2.gain.value=.25;
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.28,t+.012);g.gain.exponentialRampToValueAtTime(.0008,t+(dur||.9));
+  o.connect(g);o2.connect(g2);g2.connect(g);g.connect(c.destination);
+  o.start(t);o2.start(t);o.stop(t+(dur||.9)+.05);o2.stop(t+(dur||.9)+.05);
+}
+function flash(i,ms){var k=keys[i];if(!k)return;k.classList.add("down");setTimeout(function(){k.classList.remove("down")},ms||180)}
+function press(i,when){tone(FIRST+i,.9,when);if(!when)flash(i);else setTimeout(function(){flash(i)},when*1000)}
+kb.addEventListener("pointerdown",function(e){var k=e.target.closest(".key");if(k){e.preventDefault();press(+k.dataset.i)}});
+var MAP={a:0,w:1,s:2,e:3,d:4,f:5,t:6,g:7,y:8,h:9,u:10,j:11,k:12,o:13,l:14,p:15};
+document.addEventListener("keydown",function(e){
+  if(e.repeat||e.ctrlKey||e.metaKey||e.altKey)return;
+  var t=e.target;if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"))return;
+  var i=MAP[e.key.toLowerCase()];if(i!==undefined)press(i);
+});
+
+function inScale(pc){return SCALES[sc].iv.indexOf(((pc-root)%12+12)%12)>-1}
+function degreeNotes(){return SCALES[sc].iv.map(function(x){return (root+x)%12})}
+function render(){
+  keys.forEach(function(k,i){
+    var pc=i%12;k.classList.toggle("in",inScale(pc));k.classList.toggle("root",pc===root);
+  });
+  var s=SCALES[sc];
+  document.getElementById("name").textContent=NAMES[root]+" "+s.n.toLowerCase();
+  document.getElementById("notes").textContent=degreeNotes().map(function(p){return NAMES[p]}).join(" · ");
+  var steps=[];for(var j=0;j<s.iv.length;j++){var d=(j+1<s.iv.length?s.iv[j+1]:12)-s.iv[j];steps.push(d===1?"½":d===2?"1":d===3?"1½":String(d/2))}
+  document.getElementById("ivs").textContent="Pasos: "+steps.join(" – ");
+  document.querySelectorAll("#roots .chip").forEach(function(c,i){c.setAttribute("aria-pressed",i===root)});
+  document.querySelectorAll("#scales .chip").forEach(function(c,i){c.setAttribute("aria-pressed",i===sc)});
+  chords();
+}
+function chords(){
+  var wrap=document.getElementById("chords"),row=document.getElementById("chordrow");
+  var s=SCALES[sc];
+  if(s.iv.length!==7){wrap.hidden=true;return}
+  wrap.hidden=false;
+  var notes=degreeNotes(),roman=["I","II","III","IV","V","VI","VII"],html="";
+  for(var d=0;d<7;d++){
+    var a=notes[d],b=notes[(d+2)%7],c=notes[(d+4)%7];
+    var i3=(b-a+12)%12,i5=(c-a+12)%12;
+    var q=(i3===4&&i5===7)?"mayor":(i3===3&&i5===7)?"menor":(i3===3&&i5===6)?"disminuido":(i3===4&&i5===8)?"aumentado":"";
+    html+='<button type="button" class="chord" data-d="'+d+'"><b>'+roman[d]+'</b><span>'+NAMES[a]+" "+q+'</span></button>';
+  }
+  row.innerHTML=html;
+}
+document.getElementById("chordrow").addEventListener("click",function(e){
+  var b=e.target.closest(".chord");if(!b)return;
+  var d=+b.dataset.d,n=degreeNotes(),pcs=[n[d],n[(d+2)%7],n[(d+4)%7]];
+  var prev=-1;
+  pcs.forEach(function(pc,k){
+    var i=pc;while(i<=prev)i+=12;
+    prev=i;press(i,k*.04);
+  });
+});
+document.getElementById("play").onclick=function(){
+  var n=SCALES[sc].iv.map(function(x){return root+x});n.push(root+12);
+  n.forEach(function(i,k){press(i,k*.28)});
+};
+NAMES.forEach(function(nm,i){var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=nm;b.onclick=function(){root=i;render()};document.getElementById("roots").appendChild(b)});
+SCALES.forEach(function(s,i){var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=s.n;b.onclick=function(){sc=i;render()};document.getElementById("scales").appendChild(b)});
+render();
+</script>
+
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Plan 10K en Ocho Semanas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: lane-striped header, pace inputs, pace zones, an 8-week table with a weekly kilometre chart. */
+:root{
+  --bg:#f5f6f7; --card:#ffffff; --fg:#16181b; --muted:#60666d; --line:#dcdfe2; --clay:#c23b22; --clay-fg:#ffffff; --soft:#f7e3de; --lane:#e9ebed;
+  --f-display:"Barlow Condensed","Arial Narrow",sans-serif; --f-body:"Barlow",system-ui,sans-serif; --f-mono:"Roboto Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#111315;--card:#1a1d20;--fg:#eff1f2;--muted:#9aa1a8;--line:#2d3237;--clay:#ff7a5c;--clay-fg:#1a0a06;--soft:#35201b;--lane:#23272b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111315;--card:#1a1d20;--fg:#eff1f2;--muted:#9aa1a8;--line:#2d3237;--clay:#ff7a5c;--clay-fg:#1a0a06;--soft:#35201b;--lane:#23272b;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 56px}
+.wrap{max-width:980px;margin-inline:auto}
+.lanes{height:34px;margin-inline:-16px;background:repeating-linear-gradient(to bottom,var(--clay) 0 5px,var(--bg) 5px 8px);opacity:.9}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(3rem,12vw,6.4rem);line-height:.88;margin:28px 0 12px;text-transform:uppercase;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--clay)}
+.lede{max-width:58ch;color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:700;font-size:1.7rem;text-transform:uppercase;margin:0 0 12px;letter-spacing:.01em}
+.label{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+section{margin-block:38px}
+.inputs{display:flex;flex-wrap:wrap;gap:14px;align-items:end}
+.field{display:flex;flex-direction:column;gap:6px}
+.time{display:flex;align-items:center;gap:6px}
+input[type=number]{width:84px;font:inherit;font-family:var(--f-mono);font-size:1.4rem;padding:8px 10px;background:var(--card);color:var(--fg);border:1.5px solid var(--line);border-radius:8px}
+input:focus-visible{outline:3px solid var(--clay);outline-offset:2px}
+.time span{font-family:var(--f-mono);color:var(--muted)}
+.zones{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.zone{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.zone b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.2rem;text-transform:uppercase}
+.zone .pace{font-family:var(--f-mono);font-size:1.25rem;font-variant-numeric:tabular-nums;margin:2px 0}
+.zone small{color:var(--muted)}
+.goal{background:var(--clay);color:var(--clay-fg);border-color:var(--clay)}
+.goal small{color:inherit;opacity:.85}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th{font-family:var(--f-mono);font-weight:500;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.95rem}
+tr:last-child td{border-bottom:0}
+td.w{font-family:var(--f-display);font-weight:700;font-size:1.3rem;white-space:nowrap}
+td.km{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td small{display:block;color:var(--muted)}
+tr.rest td.w::after{content:" · baja carga";font-family:var(--f-mono);font-weight:400;font-size:.68rem;color:var(--muted)}
+tr.race{background:var(--soft)}
+.chart{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;align-items:end;height:200px;padding:14px 12px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;background-image:linear-gradient(var(--lane) 1px,transparent 1px);background-size:100% 25%;background-position:0 14px}
+.col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%;min-width:0}
+.col i{display:block;width:100%;max-width:44px;background:var(--clay);border-radius:4px 4px 0 0;min-height:2px}
+.col.rest i{opacity:.55}
+.col b{font-family:var(--f-mono);font-weight:500;font-size:.72rem}
+.axis{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:6px 12px 0;text-align:center}
+.axis span{font-family:var(--f-mono);font-size:.68rem;color:var(--muted)}
+.total{margin-top:10px;color:var(--muted);font-size:.9rem}
+.note{font-size:.9rem;color:var(--muted);max-width:66ch}
+</style>
+
+<div class="wrap">
+  <div class="lanes" aria-hidden="true"></div>
+  <p class="label" style="margin-top:20px">Para quien ya corre 5 km · tres salidas por semana</p>
+  <h1>Plan 10K<br><em>en ocho semanas</em></h1>
+  <p class="lede">Escribe tu mejor tiempo reciente en 5 km. La página estima tu ritmo de 10 km y calcula a qué velocidad correr cada tipo de sesión.</p>
+
+  <section aria-labelledby="h-in">
+    <h2 id="h-in">Tu punto de partida</h2>
+    <div class="inputs">
+      <div class="field"><span class="label" id="l5">Tiempo en 5 km</span>
+        <div class="time" role="group" aria-labelledby="l5">
+          <input id="m5" type="number" min="12" max="60" value="28" aria-label="Minutos" inputmode="numeric"><span>min</span>
+          <input id="s5" type="number" min="0" max="59" value="30" aria-label="Segundos" inputmode="numeric"><span>s</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-z">
+    <h2 id="h-z">Ritmos por sesión</h2>
+    <div class="zones" id="zones"></div>
+    <p class="note" style="margin-top:12px">La predicción usa la fórmula de Riegel, T₂ = T₁ × (D₂ ÷ D₁)^1,06. Es una referencia: con poco volumen semanal la mayoría rinde un poco menos en 10 km.</p>
+  </section>
+
+  <section aria-labelledby="h-p">
+    <h2 id="h-p">Las ocho semanas</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Semana</th><th>Sesión A · calidad</th><th>Sesión B · fácil</th><th>Sesión C · larga</th><th>Total</th></tr></thead>
+        <tbody id="plan"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-c">
+    <h2 id="h-c">Kilómetros por semana</h2>
+    <div class="chart" id="chart" role="img" aria-label="Gráfica de barras con los kilómetros de cada semana"></div>
+    <div class="axis" id="axis"></div>
+    <p class="total" id="total"></p>
+  </section>
+</div>
+
+<script>
+var $=function(id){return document.getElementById(id)};
+function mmss(sec){sec=Math.round(sec);var m=Math.floor(sec/60),s=sec%60;return m+":"+String(s).padStart(2,"0")}
+var W=[
+ {a:4,at:"4 km fáciles + 4 aceleraciones de 20 s",b:4,c:6},
+ {a:5,at:"5 km con 4 × 400 m a ritmo de 5K",b:4,c:7},
+ {a:5,at:"5 km con 3 × 800 m a ritmo de 5K",b:5,c:8},
+ {a:4,at:"4 km fáciles y sueltos",b:4,c:6,rest:1},
+ {a:6,at:"6 km con 20 min a ritmo de umbral",b:5,c:9},
+ {a:6,at:"6 km con 4 × 1000 m a ritmo de 5K",b:5,c:10},
+ {a:6,at:"6 km con 25 min a ritmo de umbral",b:5,c:8},
+ {a:4,at:"4 km con 6 aceleraciones de 20 s",b:3,c:10,race:1}
+];
+function render(){
+  var m=+$("m5").value||0,s=+$("s5").value||0,t5=m*60+s;
+  if(t5<=0)return;
+  var t10=t5*Math.pow(2,1.06),p10=t10/10,p5=t5/5;
+  $("zones").innerHTML=
+   zone("Meta 10K",mmss(p10)+" /km","Tiempo estimado: "+mmss(t10).replace(/^(\d+):(\d\d)$/,function(_,a,b){return a+" min "+b+" s"}),1)+
+   zone("Fácil",mmss(p10*1.18)+" – "+mmss(p10*1.30)+" /km","Puedes hablar en frases completas.")+
+   zone("Umbral",mmss(p10*1.03)+" – "+mmss(p10*1.06)+" /km","Duro pero controlado, frases cortas.")+
+   zone("Ritmo de 5K",mmss(p5)+" /km","Para las repeticiones de 400 a 1000 m.");
+  var h="",tot=0,max=0;
+  W.forEach(function(w,i){var k=w.a+w.b+w.c;tot+=k;if(k>max)max=k});
+  W.forEach(function(w,i){
+    var k=w.a+w.b+w.c;
+    h+='<tr class="'+(w.rest?"rest ":"")+(w.race?"race":"")+'"><td class="w">'+(i+1)+'</td><td>'+w.at+'<small>'+w.a+' km</small></td><td>Fácil<small>'+w.b+' km</small></td><td>'+(w.race?'<b>Carrera de 10 km</b><small>Sal a ritmo de '+mmss(p10*1.02)+' y acelera si te sobra al final</small>':'Largo y fácil<small>'+w.c+' km</small>')+'</td><td class="km">'+k+' km</td></tr>';
+  });
+  $("plan").innerHTML=h;
+  var ch="",ax="";
+  W.forEach(function(w,i){
+    var k=w.a+w.b+w.c;
+    ch+='<div class="col'+(w.rest?" rest":"")+'"><b>'+k+'</b><i style="height:'+(k/max*78)+'%"></i></div>';
+    ax+='<span>S'+(i+1)+'</span>';
+  });
+  $("chart").innerHTML=ch;$("axis").innerHTML=ax;
+  $("total").textContent="Volumen total del plan: "+tot+" km. La semana 4 baja la carga para que el cuerpo asimile el trabajo.";
+}
+function zone(a,b,c,goal){return '<div class="zone'+(goal?" goal":"")+'"><b>'+a+'</b><div class="pace">'+b+'</div><small>'+c+'</small></div>'}
+$("m5").addEventListener("input",render);$("s5").addEventListener("input",render);
+render();
+</script>
+
+</html>
