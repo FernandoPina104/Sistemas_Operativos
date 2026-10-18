@@ -3,8 +3,7 @@
 # ==========================================================================================
 
 # 📦 1. Instalar Apache (apt)
-# 📌 Objetivo: Actualizar la lista de paquetes disponibles en los repositorios de Ubuntu y 
-# luego descargar e instalar el servidor web Apache2.
+> ** 📌 Objetivo: Actualizar la lista de paquetes disponibles en los repositorios de Ubuntu y luego descargar e instalar el servidor web Apache2.
 
 ```bash
 sudo apt update
@@ -14,8 +13,7 @@ sudo apt install apache2
 # ------------------------------------------------------------------------------------------
 
 # 🚀 2. Iniciar y habilitar Apache (systemctl)
-# 📌 Objetivo: Iniciar el servicio de Apache en este momento (--now) y configurarlo para 
-# que arranque automáticamente en segundo plano cada vez que se encienda la computadora.
+> ** 📌 Objetivo: Iniciar el servicio de Apache en este momento (--now) y configurarlo para que arranque automáticamente en segundo plano cada vez que se encienda la computadora.
 
 ```bash
 sudo systemctl enable --now apache2
