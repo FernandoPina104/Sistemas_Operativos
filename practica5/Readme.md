@@ -69,8 +69,8 @@ Familiarizarse con la configuración de servicios de red en Linux y la conectivi
 ---
 
 ## 📝 Comandos y Código
-- ⌨️ [Comandos de Servidor y BD](Comandos/Comandos_Ubuntu_MySQL.md)
-- 💻 [Código Fuente C#](Comandos/C%23/Codigo_AgendaApp.md)
+- ⌨️ [Comandos de Servidor y BD](Comandos/Comandos/MySQL/comandos.md)
+- 💻 [Código Fuente C#](Comandos/C%23/readme.md)
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
