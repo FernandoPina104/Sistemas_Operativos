@@ -1,6 +1,6 @@
-# ===============================================
+# ============================================
 # 🌐 CÓDIGO PRINCIPAL: index.html (Menú de Navegación)                                      
-# ===============================================
+# ============================================
 
 > 📌 **Objetivo**: Este es el archivo principal (raíz) que el servidor Apache cargará por defecto 
 cuando ingreses a la IP. Su función es servir como un menú central o "Hub".
