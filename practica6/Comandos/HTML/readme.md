@@ -1,8 +1,8 @@
-=====================================================
-🌐 CÓDIGO PRINCIPAL: index.html (Menú de Navegación)                                      
-=====================================================
+# =====================================================
+# 🌐 CÓDIGO PRINCIPAL: index.html (Menú de Navegación)                                      
+# =====================================================
 
-📌 Objetivo: Este es el archivo principal (raíz) que el servidor Apache cargará por defecto 
+📌 > **Objetivo**: Este es el archivo principal (raíz) que el servidor Apache cargará por defecto 
 cuando ingreses a la IP. Su función es servir como un menú central o "Hub".
 Contiene la estructura básica de HTML5, una hoja de estilos (CSS) incrustada que soporta 
 modo claro/oscuro automáticamente, y una lista de enlaces (etiquetas <a>) que conectan 
