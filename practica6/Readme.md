@@ -1,83 +1,86 @@
 # 📌 Nombre del proyecto
-**Comandos Copiar y Borrar en Ubuntu**
+**Servidor Web Apache: Alojamiento de Cinco Páginas en Ubuntu**
 
 ---
 
 ## 📖 Descripción
-El objetivo de esta práctica es dominar los comandos fundamentales para la creación, gestión, duplicación y eliminación de archivos y carpetas directamente desde la terminal de Ubuntu.
+El objetivo de esta práctica es instalar, configurar y administrar un servidor web Apache2 en el sistema operativo Ubuntu Linux. A través de este servidor, se alojaron cinco proyectos web (HTML/CSS/JS) en el directorio público, configurando los permisos adecuados de lectura y ejecución para que sean accesibles desde cualquier dispositivo conectado a la misma red local.
 
 ## 🎯 Objetivos de aprendizaje
-Familiarizarse con la administración de archivos y directorios en la consola de Ubuntu mediante la ejecución de comandos para crear (`mkdir`), editar (`gedit`), copiar (`cp`) y eliminar (`rm`) elementos. Esto permite entender cómo usar sus diferentes variaciones y parámetros para operar el sistema de manera rápida y directa, teniendo un control total sin depender de la interfaz gráfica.
+Familiarizarse con la instalación de servicios de red en Linux y la gestión de su estado mediante `systemctl`. Comprender la estructura de directorios de Apache (`/var/www/html/`). Aprender a transferir archivos al servidor y asignar correctamente la propiedad de los mismos al usuario del sistema web (`www-data`) usando `chown` y `chmod` para evitar errores de acceso. Finalmente, gestionar la seguridad básica abriendo el puerto HTTP (80) en el cortafuegos (`ufw`) y verificando la conexión cliente-servidor.
 
 ## 💻 Material utilizado
-- 💻 Laptop con el sistema operativo **Ubuntu**
+- 💻 Laptop/Partición con el sistema operativo **Ubuntu Linux** (Servidor Web)
+- 💻 Laptop/Partición con el sistema operativo **Windows 10/11** (Cliente)
+- ⚙️ Terminal de Ubuntu (apt, systemctl, ufw, chown, chmod)
+- 🌐 Archivos fuente de 5 sitios web estáticos (HTML/CSS/JS)
 
 ---
 
 ## 📄 Informe
-- 📎 [Informe.pdf](Informe/Comandos%20Copiar%20y%20Borrar.pdf)
+- 📎 [Informe.pdf](Informe/Informe_Servidor_Apache.pdf)
 
 ## 📸 Evidencias de la práctica
 <table align="center">
   <tr>
     <td align="center">
-      <img src="Evidencias/Comandos_mkdir.png" width="280"><br>
-      <i>1. Creación de directorios (mkdir)</i>
+      <img src="Evidencias/01_instalar_apache.jpg" width="280"><br>
+      <i>1. Instalación de Apache2 (apt install)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/mkdir_c2.png" width="280"><br>
-      <i>2. Verificación de carpetas</i>
+      <img src="Evidencias/02_estado_apache.jpg" width="280"><br>
+      <i>2. Verificación del servicio (systemctl status)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/gedit.png" width="280"><br>
-      <i>3. Abriendo editor (gedit)</i>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="Evidencias/gedit_c2.png" width="280"><br>
-      <i>4. Edición de texto</i>
-    </td>
-    <td align="center">
-      <img src="Evidencias/Readme.png" width="280"><br>
-      <i>5. Archivo Readme creado</i>
-    </td>
-    <td align="center">
-      <img src="Evidencias/Readme_c2.png" width="280"><br>
-      <i>6. Contenido del Readme</i>
+      <img src="Evidencias/03_copiar_archivos.jpg" width="280"><br>
+      <i>3. Traslado de archivos a /var/www/html/</i>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="Evidencias/cp%20-r.png" width="280"><br>
-      <i>7. Copiado de carpetas (cp -r)</i>
+      <img src="Evidencias/04_permisos_chown.jpg" width="280"><br>
+      <i>4. Asignación de permisos (chown y chmod)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/rm.png" width="280"><br>
-      <i>8. Borrado de archivos (rm)</i>
+      <img src="Evidencias/05_ufw_puerto80.jpg" width="280"><br>
+      <i>5. Apertura del puerto 80 en Firewall (UFW)</i>
     </td>
     <td align="center">
-      <img src="Evidencias/rm_c1.png" width="280"><br>
-      <i>9. Verificación de borrado</i>
+      <img src="Evidencias/06_ip_servidor.jpg" width="280"><br>
+      <i>6. Consulta de IP local (hostname -I)</i>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Evidencias/07_test_windows.jpg" width="280"><br>
+      <i>7. Conexión exitosa desde Windows (PowerShell)</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/08_navegador_menu.jpg" width="280"><br>
+      <i>8. Menú principal cargando en el cliente web</i>
+    </td>
+    <td align="center">
+      <img src="Evidencias/09_navegador_atlas.jpg" width="280"><br>
+      <i>9. Ejecución interactiva del "Atlas Solar"</i>
     </td>
   </tr>
 </table>
 
 ---
 
-## 📝 Comandos
-- ⌨️ [Comandos.txt](Comandos/Comandos_Copiar_Borrar.md)
+## 📝 Comandos y Código
+- ⌨️ [Comandos de Configuración Apache](Comandos/Comandos_Apache.md)
+- 💻 [Código Fuente: Menú (index.html)](Codigos/index.md)
+- 💻 [Código Fuente: Atlas Solar](Codigos/atlas-solar.md)
 
 ## 🎥 Video del funcionamiento
-- 📄 [Readme](Vídeo/readme.txt)
-- ▶️ [Ver video en YouTube](https://youtu.be/6_UBo93rzWk)
+- 📄 [Readme](Video/readme.txt)
+- ▶️ [Ver video en YouTube](https://youtu.be/TU_ENLACE_AQUI)
 
 ---
 
 ## 💡 Conclusiones
-La práctica permitió reforzar la administración directa del sistema de archivos en Ubuntu. Se comprendió la potencia y responsabilidad al usar comandos de manipulación como `cp` y `rm`, destacando la importancia de aplicar los parámetros correctos (como `-r` para procesar carpetas completas). El uso de la terminal nos enseña que las acciones son inmediatas y definitivas —especialmente al eliminar con `rm -r`, ya que no existe una papelera de reciclaje—, lo que exige mayor precaución al teclear, pero a cambio ofrece una velocidad y un nivel de control muy superior al uso tradicional del ratón.
+La implementación del servidor Apache permitió comprender cómo funciona el alojamiento de sitios web a nivel de sistema operativo. Se comprobó la importancia crítica de la correcta asignación de dueños (`www-data`) y permisos de lectura/ejecución (`755`), ya que sin ellos el servidor bloqueará las peticiones mostrando un error de "Acceso Denegado" (Forbidden 403). Al probar los 5 proyectos desde una computadora externa (Windows) escribiendo la IP del servidor Ubuntu en el navegador, se constató el funcionamiento real de un entorno cliente-servidor a través de la red local.
 
 ## 📊 Resultados
-- 📈 [Resultados.pdf](Resultados/Resultados_Comandos_Copiar_Borrar.pdf)
-
-
+- 📈 [Resultados.pdf](Resultados/Resultados_Servidor_Apache.pdf)
