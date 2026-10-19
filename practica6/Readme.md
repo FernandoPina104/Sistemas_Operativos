@@ -18,7 +18,7 @@ Familiarizarse con la instalación de servicios de red en Linux y la gestión de
 ---
 
 ## 📄 Informe
-- 📎 [Informe.pdf](Informe/Informe_Servidor_Apache.pdf)
+- 📎 [Informe.pdf](Informe/Informe_Practica6.pdf)
 
 ## 📸 Evidencias de la práctica
 <table align="center">
@@ -69,9 +69,8 @@ Familiarizarse con la instalación de servicios de red en Linux y la gestión de
 ---
 
 ## 📝 Comandos y Código
-- ⌨️ [Comandos de Configuración Apache](Comandos/Comandos_Apache.md)
-- 💻 [Código Fuente: Menú (index.html)](Codigos/index.md)
-- 💻 [Código Fuente: Atlas Solar](Codigos/atlas-solar.md)
+- ⌨️ [Comandos de Configuración Apache](Comandos/comandos.md)
+- 💻 [Código Fuente: Menú y páginas](HTML/readme.md)
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Video/readme.txt)
@@ -83,4 +82,4 @@ Familiarizarse con la instalación de servicios de red en Linux y la gestión de
 La implementación del servidor Apache permitió comprender cómo funciona el alojamiento de sitios web a nivel de sistema operativo. Se comprobó la importancia crítica de la correcta asignación de dueños (`www-data`) y permisos de lectura/ejecución (`755`), ya que sin ellos el servidor bloqueará las peticiones mostrando un error de "Acceso Denegado" (Forbidden 403). Al probar los 5 proyectos desde una computadora externa (Windows) escribiendo la IP del servidor Ubuntu en el navegador, se constató el funcionamiento real de un entorno cliente-servidor a través de la red local.
 
 ## 📊 Resultados
-- 📈 [Resultados.pdf](Resultados/Resultados_Servidor_Apache.pdf)
+- 📈 [Resultados.pdf](Resultados/Resultados_Practica6.pdf)
