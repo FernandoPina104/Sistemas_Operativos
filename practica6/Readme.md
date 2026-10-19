@@ -70,7 +70,7 @@ Familiarizarse con la instalación de servicios de red en Linux y la gestión de
 
 ## 📝 Comandos y Código
 - ⌨️ [Comandos de Configuración Apache](Comandos/comandos.md)
-- 💻 [Código Fuente: Menú y páginas](HTML/readme.md)
+- 💻 [Código Fuente: Menú y páginas](Comandos/HTML/readme.md)
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Video/readme.txt)
