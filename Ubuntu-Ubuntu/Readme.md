@@ -1,16 +1,18 @@
-# 📌 Demonio de Monitoreo Persistente con Systemd
+# 📌 Nombre del proyecto
+**Compartir Archivos en Red Local (Ubuntu - Ubuntu)**
 
 ---
 
 ## 📖 Descripción
-El objetivo de esta práctica es diseñar e implementar un servicio/demonio persistente en segundo plano administrado por **systemd**. El demonio se ejecuta continuamente en un ciclo de 5 segundos registrando en una bitácora la fecha/hora exacta con segundos, el número total de procesos activos y la memoria RAM disponible. El sistema cuenta con tolerancia a fallos, garantizando que ante un cierre forzado mediante el comando `kill -9`, el sistema operativo (`systemd`) lo reinicie automáticamente en menos de 5 segundos con un nuevo PID.
+El objetivo de esta práctica es implementar un servidor de archivos en una red local utilizando el servicio Samba sobre Ubuntu Linux, y demostrar la conexión, lectura y escritura de archivos desde un segundo equipo cliente que también opera con el sistema operativo Ubuntu.
 
 ## 🎯 Objetivos de aprendizaje
-Familiarizarse con la creación y administración de servicios del sistema en Linux mediante **systemd**. Aprender a estructurar scripts continuos en Bash con ciclos infinitos, escribir archivos de unidad `.service`, configurar directivas de reanimación automática (`Restart=always` y `RestartSec=3`), direccionar flujos de datos hacia archivos de log (`/var/log/monitordemonio.log`) y aplicar pruebas de resiliencia mediante la interrupción abrupta de procesos con señales del kernel.
+Familiarizarse con la instalación y configuración de servicios de red en Linux. Aprender a definir recursos compartidos editando el archivo `/etc/samba/smb.conf`, gestionar los permisos de archivos y carpetas (`chown`, `chmod`), administrar contraseñas de red (`smbpasswd`) y acceder a los recursos de manera remota desde otra terminal Ubuntu utilizando herramientas de consola como `smbclient` o el explorador de archivos nativo.
 
 ## 💻 Material utilizado
-- 💻 Laptop con el sistema operativo **Ubuntu Desktop** (Linux)
-- ⚙️ Administrador de sistemas y servicios **systemd**
+- 💻 Máquina Servidor con el sistema operativo **Ubuntu Linux**
+- 💻 Máquina Cliente con el sistema operativo **Ubuntu Linux**
+- ⚙️ Servicio de red para compartir archivos (Samba) y terminal
 
 ---
 
@@ -21,50 +23,16 @@ Familiarizarse con la creación y administración de servicios del sistema en Li
 <table align="center">
   <tr>
     <td align="center">
-      <img src="Evidencias/d01.png" width="280"><br>
-      <i>1. Creación del script en Bash</i>
+      <img src="Evidencias/U1.jpeg" width="280"><br>
+      <i>1. Configuración del servidor Samba en Ubuntu</i>
     </td>
     <td align="center">
-      <img src="Evidencias/d02.png" width="280"><br>
-      <i>2. Otorgando permisos de ejecución (chmod +x)</i>
+      <img src="Evidencias/U2.jpeg" width="280"><br>
+      <i>2. Verificación de permisos y estado del servicio</i>
     </td>
     <td align="center">
-      <img src="Evidencias/d03.png" width="280"><br>
-      <i>3. Archivo de unidad monitordemonio.service</i>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="Evidencias/d04.png" width="280"><br>
-      <i>4. Recarga de configuración (daemon-reload)</i>
-    </td>
-    <td align="center">
-      <img src="Evidencias/d05.png" width="280"><br>
-      <i>5. Habilitación e inicio del servicio</i>
-    </td>
-    <td align="center">
-      <img src="Evidencias/d06.png" width="280"><br>
-      <i>6. Estado activo del servicio (active running)</i>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="Evidencias/d07.png" width="280"><br>
-      <i>7. Salida de los logs en tiempo real (tail -f)</i>
-    </td>
-    <td align="center">
-      <img src="Evidencias/d08.png" width="280"><br>
-      <i>8. Consulta del PID inicial</i>
-    </td>
-    <td align="center">
-      <img src="Evidencias/d09.png" width="280"><br>
-      <i>9. Interrupción forzada con kill -9</i>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" colspan="3">
-      <img src="Evidencias/d10.png" width="280"><br>
-      <i>10. Reanimación automática por systemd y asignación de nuevo PID</i>
+      <img src="Evidencias/U3.jpeg" width="280"><br>
+      <i>3. Conexión y transferencia exitosa desde el cliente Ubuntu</i>
     </td>
   </tr>
 </table>
@@ -76,13 +44,12 @@ Familiarizarse con la creación y administración de servicios del sistema en Li
 
 ## 🎥 Video del funcionamiento
 - 📄 [Readme](Vídeo/readme.txt)
-- ▶️ [Ver video en YouTube](https://youtu.be/Upp0sWO5Haw)
+- ▶️ [Ver video en YouTube](https://youtu.be/PON_TU_ENLACE_AQUI)
 
 ---
 
 ## 💡 Conclusiones
-La práctica permitió comprender el funcionamiento y la arquitectura de los demonios en entornos Linux modernos utilizando `systemd`. A diferencia de los programas ejecutados en terminales interactivas o mediante tareas programadas como `cron`, un servicio administrado por `systemd` garantiza supervisión continua en segundo plano. Se comprobó experimentalmente la condición de aprobación: al aplicar la directiva `Restart=always` con un temporizador `RestartSec=3`, el sistema operativo detecta la terminación abrupta del proceso provocada por `kill -9` y levanta automáticamente el demonio en menos de 5 segundos asignándole un nuevo PID, garantizando la alta disponibilidad del monitoreo.
+La práctica demostró exitosamente cómo establecer un entorno de compartición de archivos descentralizado entre dos máquinas Linux (Ubuntu-Ubuntu). Se corroboró la importancia de alinear los permisos del sistema de archivos local (`chmod 777` y `chown`) con los permisos lógicos del servicio de red en `smb.conf` para evitar errores de acceso. Acceder al servidor a través de la red local (usando la sintaxis `smb://<IP>/` o comandos de terminal) permitió validar que la información fluye de manera segura y bidireccional, facilitando el trabajo en red sin depender de medios de almacenamiento físicos.
 
 ## 📊 Resultados
 - 📈 [Resultados](Resultados/Resultados_Ubuntu-Ubuntu.pdf)
-
